@@ -7,6 +7,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-family: 'Pixelify Sans', cursive;
     font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
 }
 
 #top-content-container{
@@ -21,8 +22,8 @@ body {
     align-content: center;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom:50px;
-    margin-top:10px;
+    margin-bottom: 3.125em;
+    margin-top: 0.625em;
 }
 
 #populate-graph-options {
@@ -51,9 +52,9 @@ body {
     border: none;
     background-color: #7BBDFF;
     color: #ffffff; 
-    margin-bottom: 15px;
-    padding: 12px 24px; 
-    font-size: 16px;
+    margin-bottom: 0.9375em;
+    margin-bottom: 0.9375em;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease; 
     border-radius: 8px;
@@ -72,22 +73,22 @@ body {
 }
 
 h3{
-    margin: 10px 0px;
+  margin: 0.625em 0;
 }
 
 
 #search-input {
-    display: block;
-    line-height: 24px;
-    padding: 10px 30px 10px 55px;
-    border: 5px solid #7BBDFF;
-    background-image: url(https://www.pokencyclopedia.info/sprites/items/items_3ds/i_3ds_master-ball.png);
-    background-repeat: no-repeat;
-    background-position: left center;
-    width:480px;
-    font-size: 32px;
-    height: auto;
-    background-size: contain;
+  display: block;
+  line-height: 24px;
+  padding: 10px 30px 10px 55px;
+  border: 5px solid #7BBDFF;
+  background-image: url(https://www.pokencyclopedia.info/sprites/items/items_3ds/i_3ds_master-ball.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  width:480px;
+  font-size: 2rem;
+  height: auto;
+  background-size: contain;
 }
 
 #search-input:focus {
@@ -101,7 +102,6 @@ h3{
 }
 
 #search-section-container{
-
     margin: 0px auto;
 }
 
@@ -117,14 +117,14 @@ h3{
     list-style-type: none;
     padding: 0;
     border: 1px solid ;
-    max-height: 150px;
+    max-height: 9.375em;
     overflow-y: auto;
     display: none;
-    font-size: 24px;
+    font-size: 1.0rem;
 }
 
 #suggestions-list li {
-    padding: 10px;
+    padding: 1.25em;
     cursor: pointer;
     background-color: #ffffff;
     margin:0;
@@ -141,7 +141,7 @@ h3{
     color: red; 
     cursor: pointer;
     font-size: 1rem;
-    margin-left: 5px;
+    margin-left: 0.3125em;
     vertical-align: middle; 
 }
 
@@ -149,7 +149,7 @@ h3{
     margin-left: auto;
     margin-right: auto;
     width: 96%;
-    margin-top:50px;
+    margin-top: 3.125em;
 }
 
 #search-results {
@@ -157,23 +157,23 @@ h3{
     border-image: url(https://luttje.github.io/css-pokemon-gameboy/styles/images/frame-hd.png) 42 round;
     border-radius: 10px;
     flex-wrap: wrap;
-    padding:5px 10px;
+    padding: 0.3125em 0.625em;
     position: relative;
     border-style: solid;
-    border-width: 16px;
-    margin-bottom: 10px;
+    border-width: 1em;
+    margin-bottom: 0.625em;
 }
 
 
 #search-results li {
     display: flex;
     align-items: center;
-    padding: 8px 16px;
-    margin: 5px 10px 5px 0;
+    padding: 0.625em 1.25em;
+    margin: 0.3125em 0.625em 0.3125em 0;
     background-color: #f1f1f1;
     border: 1px solid #000;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -257,13 +257,6 @@ h3{
     cubic-bezier(.3, .7, .4, 1);
 }
 
-@media (min-width: 768px) {
-  .clear-all-button-front {
-    font-size: 1.25rem;
-    padding: 12px 42px;
-  }
-}
-
 .clear-all-button-pushable:hover {
   filter: brightness(110%);
   -webkit-filter: brightness(110%);
@@ -297,4 +290,15 @@ h3{
 
 .clear-all-button-pushable:focus:not(:focus-visible) {
   outline: none;
+}
+
+footer{
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .clear-all-button-front {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
 }

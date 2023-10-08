@@ -250,8 +250,8 @@ function updateSelectedPokemonDisplay() {
             removeButton.textContent = 'X';
             removeButton.className = 'remove-button';
 
-            // Add a click event listener to the remove button
-            removeButton.addEventListener('click', function() {
+            // Add a click event listener to the element
+            listItem.addEventListener('click', function() {
                 // Remove the Pokémon from the selectedPokemon array
                 const index = selectedPokemon.indexOf(pokemonName);
                 if (index !== -1) {
