@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Showdown Graphs</title>
+    <link rel="stylesheet" href="styles/pokemon-graph-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,700&family=Maven+Pro:wght@700&family=Montserrat:ital,wght@1,500&family=Pixelify+Sans&family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="top-content-container">
+
+        <!-- Graph container -->
+        <div id="graph-container">
+            <div id="pokemon-graph"></div>
+        </div>
+        
+        <div>
+            <div id="graph-parameters-options">
+                <!-- Display Parameters container -->
+                <div id="graph-parameters">
+                    <h3>Display Parameters:</h3>
+                    <div id="sheet-dropdown-container">
+                        <label for="sheet-dropdown">Tier:</label>
+                        <select id="sheet-dropdown"></select>
+                    </div> 
+                    <br>
+                    <div id="date-data-dropdowns">
+                        <div>
+                            <label for="min-data-dropdown">Min Date:</label>
+                            <select id="min-data-dropdown">
+                            </select>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="max-data-dropdown">Max Date:</label>
+                            <select id="max-data-dropdown">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                    
+                <!-- Clear All button -->
+                <button class="clear-all-button-pushable" role="button" id="clear-all-button">
+                    <span class="clear-all-button-shadow"></span>
+                    <span class="clear-all-button-edge"></span>
+                    <span class="clear-all-button-front text">
+                      Clear All Pokémon
+                    </span>
+                  </button>
+                
+                <!-- Preset Options container -->
+                <div id="populate-graph-options">
+                    <h3>Preset Options:</h3>
+                    <h5>(taken from max date)</h5>
+                    <button id="populate-top-5-button" class="populate-graph-button"  >Top 5 Pokémon</button>
+                    <button id="populate-top-10-button" class="populate-graph-button">Top 10 Pokémon</button>
+                    <button id="populate-top-25-button" class="populate-graph-button" >Top 25 Pokémon</button>
+                </div>
+
+            </div>
+
+        </div>
+        
+        <!-- Search Bar container -->
+        <div id="search-section-container">
+            <div id="search-container">
+                <input type="text" id="search-input" class="search-with-icon" spellcheck="false" >
+                <ul id="suggestions-list"></ul>
+            </div>
+        </div> 
+
+        <!-- Search Results container -->        
+        <div id="search-results-container">
+            <div id="search-results"></div>
+        </div>
+
+    </div>    
+
+    <script src="src/pokemon-script.js" type="module"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js"></script>
+    
+</body>
+</html>
