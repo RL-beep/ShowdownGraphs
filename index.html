@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Showdown Graphs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <link rel="stylesheet" href="styles/pokemon-graph-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,26 +42,35 @@
                         </div>
                     </div>
                 </div>
-                    
-                <!-- Clear All button -->
-                <button class="clear-all-button-pushable" role="button" id="clear-all-button">
-                    <span class="clear-all-button-shadow"></span>
-                    <span class="clear-all-button-edge"></span>
-                    <span class="clear-all-button-front text">
-                      Clear All Pokémon
-                    </span>
-                  </button>
                 
                 <!-- Preset Options container -->
                 <div id="populate-graph-options">
                     <h3>Preset Options:</h3>
                     <h5>(taken from max date)</h5>
-                    <button id="populate-top-5-button" class="populate-graph-button"  >Top 5 Pokémon</button>
-                    <button id="populate-top-10-button" class="populate-graph-button">Top 10 Pokémon</button>
-                    <button id="populate-top-25-button" class="populate-graph-button" >Top 25 Pokémon</button>
+                    <button id="populate-top-5-button" class="populate-graph-button">
+                        <span>Top 5</span>
+                        <span>Pokémon</span>
+                    </button>
+                    <button id="populate-top-10-button" class="populate-graph-button">
+                        <span>Top 10</span>
+                        <span>Pokémon</span>
+                    </button>
+                    <button id="populate-top-25-button" class="populate-graph-button">
+                        <span>Top 25</span>
+                        <span>Pokémon</span>
+                    </button>
                 </div>
 
             </div>
+
+            <!-- Clear All button -->
+            <button class="clear-all-button-pushable" role="button" id="clear-all-button">
+                <span class="clear-all-button-shadow"></span>
+                <span class="clear-all-button-edge"></span>
+                <span class="clear-all-button-front text">
+                    Clear All Pokémon
+                </span>
+                </button>
 
         </div>
         

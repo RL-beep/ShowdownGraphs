@@ -43,8 +43,6 @@ const searchResults = document.getElementById('search-results');
 
 
 
-
-
 // JavaScript for handling the search functionality
 document.addEventListener('DOMContentLoaded', function(){
     getAllPokedexDetails();
@@ -259,6 +257,7 @@ function updateSelectedPokemonDisplay() {
                     // Update the display and graph
                     updateSelectedPokemonDisplay();
                     toggleSearchContainerVisibility();
+                    toggleClearAllButtonVisibility()
                 }
             });
 

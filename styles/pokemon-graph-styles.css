@@ -18,7 +18,7 @@ body {
 #graph-parameters-options {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-content: center;
     margin-left: auto;
     margin-right: auto;
@@ -26,15 +26,14 @@ body {
     margin-top: 0.625em;
 }
 
+
 #populate-graph-options {
-    display: flex;
-    flex-direction: column;
     align-items: center; 
     text-align: center; 
-    justify-content: space-evenly; 
     background-color: #f1f1f1;
     border-radius: 8px;
     width:33%;
+    max-width: 80%;
 }
 
 #graph-parameters{
@@ -44,36 +43,58 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly; 
-    align-items: center; 
-    text-align: center; 
+    align-items: left; 
+    text-align: left; 
+    padding-left: 1em;
+}
+
+#sheet-dropdown-container {
+  max-width: 80%; /* Adjust the percentage as needed */
+}
+
+#sheet-dropdown {
+  width: 100%; /* Ensure the select element takes the full available width */
 }
 
 #graph-parameters-options .populate-graph-button {
-    border: none;
-    background-color: #7BBDFF;
-    color: #ffffff; 
-    margin-bottom: 0.9375em;
-    margin-bottom: 0.9375em;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease; 
-    border-radius: 8px;
-    min-width: max-content;
-    font-family: 'Bitter', serif;
-    font-family: 'Maven Pro', sans-serif;
-    font-family: 'Montserrat', sans-serif;
-    font-family: 'Pixelify Sans', cursive;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    min-width: 50%;
+  border: none;
+  background-color: #7BBDFF;
+  color: #ffffff; 
+  margin-bottom: 0.9375em;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+  border-radius: 8px;
+  min-width: max-content;
+  font-family: 'Bitter', serif;
+  font-family: 'Maven Pro', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Pixelify Sans', cursive;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  padding: 0.5em 0.8em;
+  /* Add box-shadow for a different style */
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  /* Add a border to give it a different look */
+  border: 2px solid #7BBDFF;
+  max-width: 90%;
 }
 
 #graph-parameters-options .populate-graph-button:hover {
-    background-color: #AC6AD5;
+  background-color: #AC6AD5;
+  /* Adjust border color on hover for contrast */
+  border-color: #AC6AD5;
+  /* Adjust box-shadow on hover for a subtle lift effect */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 h3{
   margin: 0.625em 0;
+  text-align: center;
+}
+
+h5{
+  margin-bottom: 1.5em;
 }
 
 
@@ -187,13 +208,14 @@ h3{
   }
   
 
-
-
-/* CSS */
+/* clear all button CSS */
 
 #clear-all-button{
     height: fit-content;
     align-self: flex-end;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 1em;
 }
 
 .clear-all-button-pushable {
@@ -296,9 +318,18 @@ footer{
   text-align: center;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 896px) {
   .clear-all-button-front {
     font-size: 1.25rem;
-    padding: 12px 42px;
+    padding: 0.5em 1em;
   }
+  #populate-graph-options .populate-graph-button span {
+    display: block; /* Display each line as a block element */
+    text-align: center; /* Center-align the text */
+}
+
+  
+  /* #graph-parameters-options{
+    border: 5px solid red;
+  } */
 }
