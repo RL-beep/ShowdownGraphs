@@ -8,11 +8,13 @@ body {
     font-family: 'Pixelify Sans', cursive;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
+    background-color: #0d1b2a;
 }
 
 #top-content-container{
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 #graph-parameters-options {
@@ -24,42 +26,46 @@ body {
     margin-right: auto;
     margin-bottom: 3.125em;
     margin-top: 0.625em;
+    padding: 0px 1em;
 }
 
+#date-data-dropdowns{
+  display: flex;
+  flex-direction: row;
+  font-size: 0.8rem; 
+  justify-content: space-around;
+}
 
 #populate-graph-options {
     align-items: center; 
     text-align: center; 
-    background-color: #f1f1f1;
+    background-color: #e0e1dd;
     border-radius: 8px;
     width:33%;
-    max-width: 80%;
+    padding: 0px 1em;
 }
 
 #graph-parameters{
-    background-color: #f1f1f1;
+    background-color: #e0e1dd;
     border-radius: 8px;
-    width:33%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly; 
     align-items: left; 
     text-align: left; 
-    padding-left: 1em;
+    padding: 0px 0.5em 0px 0.5em ;
 }
 
-#sheet-dropdown-container {
-  max-width: 80%; /* Adjust the percentage as needed */
-}
+
 
 #sheet-dropdown {
-  width: 100%; /* Ensure the select element takes the full available width */
+  width: min-content; /* Ensure the select element takes the full available width */
 }
 
 #graph-parameters-options .populate-graph-button {
   border: none;
-  background-color: #7BBDFF;
-  color: #ffffff; 
+  background-color: #0466c8;
+  color: whitesmoke; 
   margin-bottom: 0.9375em;
   font-size: 1rem;
   cursor: pointer;
@@ -76,14 +82,14 @@ body {
   /* Add box-shadow for a different style */
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   /* Add a border to give it a different look */
-  border: 2px solid #7BBDFF;
+  border: 2px solid #0466c8;
   max-width: 90%;
 }
 
 #graph-parameters-options .populate-graph-button:hover {
-  background-color: #AC6AD5;
+  background-color: #002855;
   /* Adjust border color on hover for contrast */
-  border-color: #AC6AD5;
+  border-color: #002855;
   /* Adjust box-shadow on hover for a subtle lift effect */
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
@@ -102,7 +108,7 @@ h5{
   display: block;
   line-height: 24px;
   padding: 10px 30px 10px 55px;
-  border: 5px solid #7BBDFF;
+  border: 5px solid #0466c8;
   background-image: url(https://www.pokencyclopedia.info/sprites/items/items_3ds/i_3ds_master-ball.png);
   background-repeat: no-repeat;
   background-position: left center;
@@ -167,45 +173,45 @@ h5{
 }
 
 #search-results-container {
-    margin-left: auto;
-    margin-right: auto;
-    width: 96%;
-    margin-top: 3.125em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 96%;
+  margin-top: 3.125em;
+  background-color: white; /* Set the background color to white */
 }
 
 #search-results {
-    display: flex;
-    border-image: url(https://luttje.github.io/css-pokemon-gameboy/styles/images/frame-hd.png) 42 round;
-    border-radius: 10px;
-    flex-wrap: wrap;
-    padding: 0.3125em 0.625em;
-    position: relative;
-    border-style: solid;
-    border-width: 1em;
-    margin-bottom: 0.625em;
+  display: flex;
+  border-image: url(https://luttje.github.io/css-pokemon-gameboy/styles/images/frame-hd.png) round;
+  border-radius: 10px;
+  border-image-slice: 42 fill;
+  flex-wrap: wrap;
+  padding: 0.3125em 0.625em;
+  position: relative;
+  border-style: solid;
+  border-width: 1em;
 }
 
-
 #search-results li {
-    display: flex;
-    align-items: center;
-    padding: 0.625em 1.25em;
-    margin: 0.3125em 0.625em 0.3125em 0;
-    background-color: #f1f1f1;
-    border: 1px solid #000;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    cursor: pointer;
-    position: relative;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  #search-results  li:hover {
-    background-color: #ffcc00;
-  }
+  display: flex;
+  align-items: center;
+  padding: 0.625em 1.25em;
+  margin: 0.3125em 0.625em 0.3125em 0;
+  background-color: whitesmoke;
+  border: 1px solid #000;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#search-results li:hover {
+  background-color: #ffcc00;
+}
   
 
 /* clear all button CSS */
@@ -316,6 +322,7 @@ h5{
 
 footer{
   text-align: center;
+  color: whitesmoke;
 }
 
 @media (max-width: 896px) {
@@ -327,9 +334,9 @@ footer{
     display: block; /* Display each line as a block element */
     text-align: center; /* Center-align the text */
 }
+  #suggestions-list li {
+    font-size: 1.25rem;
+  }
 
-  
-  /* #graph-parameters-options{
-    border: 5px solid red;
-  } */
+
 }

@@ -151,6 +151,9 @@ function updateGraph() {
         }
     });
 
+    // Check if there is no data in the graph
+    const isNoData = data.length === 0 || data.every(trace => trace === {});
+
     // Define the layout of the graph
     const layout = {
         title: `${formatSheetName(selectedSheetName)}`,
@@ -158,11 +161,51 @@ function updateGraph() {
             title: 'Monthly Snapshot',
             dtick: 'M1',
             showline: true,
+            tickfont: {
+                color: 'whitesmoke' // Set the color of the x-axis labels to white
+            },
+            linecolor: 'whitesmoke', // Set the color of the x-axis line to white
+
+                    // Set the x-axis title font color to white
+            titlefont: {
+            color: 'whitesmoke'
+        },
+            // Set the default range mode to nonnegative
+            rangemode: 'nonnegative',
+            showticklabels:!isNoData
         },
         yaxis: {
             title: 'Usage (%)',
+            tickfont: {
+                color: 'whitesmoke' // Set the color of the y-axis labels to white
+            },
+            linecolor: 'whitesmoke', // Set the color of the y-axis line to white
+
+            // Set the x-axis title font color to white
+            titlefont: {
+            color: 'whitesmoke'
+        },
+            // Set the default range mode to nonnegative
+            rangemode: 'nonnegative',
+            showticklabels: !isNoData,
+            // Conditionally set the background grid lines color to white
+            gridcolor: isNoData ? '#0d1b2a' : 'whitesmoke'
         },
         hovermode: 'closest', // Enable hover events
+        plot_bgcolor: '#0d1b2a', // Change this to the desired color for the plot area background
+        paper_bgcolor: '#0d1b2a', // Change this to the desired color for the paper background
+            // Set the legend font color to white
+        legend: {
+            font: {
+                color: 'whitesmoke'
+            }
+        },
+        titlefont: {
+            color: 'whitesmoke'
+        },
+        xaxisfont: {
+            color: 'whitesmoke'
+        }
     };
 
     // Add a custom hover event handler to show only the data point for the current Pokemon being hovered over
@@ -181,6 +224,7 @@ function updateGraph() {
     // Plot the graph
     Plotly.newPlot(graphContainer, data, layout);
 }
+
 
 
 
@@ -393,6 +437,9 @@ function getMinMaxDatesFromCurrentCache() {
 }
 
 function handleSheetSelection() {
+
+
+
     selectedSheetName = sheetDropdown.value;
     getTierUsages()
 }
