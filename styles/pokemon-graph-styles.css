@@ -29,6 +29,11 @@ body {
     padding: 0px 1em;
 }
 
+#flex-direction-column{
+  display: flex;
+  flex-direction: column;
+}
+
 #date-data-dropdowns{
   display: flex;
   flex-direction: row;
@@ -222,6 +227,7 @@ h5{
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 1em;
+    display: none;
 }
 
 .clear-all-button-pushable {

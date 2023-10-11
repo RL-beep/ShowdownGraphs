@@ -7,12 +7,6 @@ const pokemonAttributes = {
   imageOffsetY: []
 };
 
-
-//Define an array to store the pokemon image y offset
-let AllPokemonImageY = [];
-
-// Define the output file path
-const outputPath = './smogon-stats.xls';
 let pokemonNamesPromise = null; // Cache for getPokemonAttributesFromPokedex result
 
  // This will decide which tiers to fetch data from
@@ -30,10 +24,39 @@ const tiers = [
                 'gen9nationaldexmonotype-1630'
               ];
 
+const snapshots = [
+                '2022-11/',
+                '2022-12/',
+                '2023-01/',
+                '2023-02/',
+                '2023-03/',
+                '2023-04/',
+                '2023-05/',
+                '2023-06/',
+                '2023-07/',
+                '2023-08/',
+                '2023-09/'
+]
+
 const fs = require('fs');
-const XLSX = require('xlsx');
+const Papa = require('papaparse'); // Import the papaparse library
 const request = require('request');
 const cheerio = require('cheerio');
+
+function outputMetadataFile() {
+  
+  const csvData = [['Sheets'], ...tiers.map((tier) => [tier])];
+
+  const csv = Papa.unparse(csvData, { header: true });
+
+  // Specify the CSV file name
+  const outputPath = 'ShowdownGraphs/files/metadata.csv';
+
+  // Write the CSV data to the file
+  fs.writeFileSync(outputPath, csv);
+
+  console.log(`Metadata has been written to ${outputPath}`);
+}
 
 async function getPokemonAttributesFromPokedex() {
   if (!pokemonNamesPromise) {
@@ -141,13 +164,7 @@ async function WritePokedex() {
       // Call the function and wait for it to complete
       const pokemonAttributes = await getPokemonAttributesFromPokedex();
 
-      // Create a new XLSX workbook
-      const workbook = XLSX.utils.book_new();
-
-      // Create a worksheet with the desired name
-      const sheetName = 'Pokedex';
-      
-      // Create an array of objects with 'Pokemon Name' and 'Pokemon Number' properties
+      // Create an array of objects with the desired data
       const dataToWrite = pokemonAttributes.names.map((name, index) => ({
         'Pokemon Name': name,
         'Pokemon Number': pokemonAttributes.ImageNumbers[index],
@@ -156,14 +173,14 @@ async function WritePokedex() {
         'Pokemon Image Offset Y': pokemonAttributes.imageOffsetY[index]
       }));
 
-      // Convert the array of objects to a worksheet
-      const worksheet = XLSX.utils.json_to_sheet(dataToWrite);
+      // Convert the array of objects to a CSV-formatted string
+      const csvData = Papa.unparse(dataToWrite);
 
-      // Add the worksheet to the workbook
-      XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
+      // Specify the CSV file name
+      const outputPath = 'ShowdownGraphs/files/pokedex.csv';
 
-      // Write the workbook to the XLSX file
-      XLSX.writeFile(workbook, outputPath);
+      // Write the CSV data to the file
+      fs.writeFileSync(outputPath, csvData);
 
       console.log(`Pokedex Data has been written to ${outputPath}`);
 
@@ -175,53 +192,49 @@ async function WritePokedex() {
 }
 
 
-function addPokemonDataToXLS(pokemonData, tier, snapshot) {
+async function writePokemonDataToCSV(data,tier) {
+  const csvData = [];
+
+  // Create the header row
+  csvData.push(["Pokemon", "Usage", "Snapshot"]);
+
+  data.forEach(item => {
+    Object.keys(item).forEach(key => {
+      const { usage, snapshot } = item[key];
+      csvData.push([key, usage, snapshot]);
+    });
+  });
+
+  const csv = Papa.unparse(csvData);
+
+  // Specify the CSV file name
+  const outputPath = `ShowdownGraphs/files/${tier}.csv`;
+
   try {
-    // Load the existing XLSX workbook
-    const workbook = XLSX.readFile(outputPath);
-
-    // Check if the worksheet with the desired name (the tier) exists
-    if (workbook.Sheets[tier]) {
-      // If the worksheet exists, append all data at once
-      const worksheet = workbook.Sheets[tier];
-      const newRows = Object.entries(pokemonData).map(([pokemonName, data]) => ({
-        'Pokemon Name': pokemonName,
-        'Usage': data.usage,
-        'Snapshot': data.snapshot,
-        'Tier': data.tier,
-      }));
-      const header = XLSX.utils.sheet_to_json(worksheet, { header: 1 })[0];
-      const existingRows = XLSX.utils.sheet_to_json(worksheet, { header: header });
-      const combinedRows = existingRows.concat(newRows);
-      worksheet['!ref'] = XLSX.utils.encode_range({ s: { c: 0, r: 0 }, e: { c: header.length - 1, r: combinedRows.length } });
-      XLSX.utils.sheet_add_json(worksheet, combinedRows, { skipHeader: true });
-    } else {
-      // If the worksheet doesn't exist, create a new worksheet
-      const worksheet = XLSX.utils.json_to_sheet(
-        Object.entries(pokemonData).map(([pokemonName, data]) => ({
-          'Pokemon Name': pokemonName,
-          'Usage': data.usage,
-          'Snapshot': data.snapshot,
-          'Tier': data.tier,
-        }))
-      );
-
-      // Add the new worksheet to the workbook
-      XLSX.utils.book_append_sheet(workbook, worksheet, tier);
-    }
-
-    // Write the updated workbook back to the XLSX file
-    XLSX.writeFile(workbook, outputPath);
-
-    console.log(`Data for ${tier} ${snapshot} has been added to ${outputPath}`);
-  } catch (error) {
-    console.error(`Error writing data for: ${tier} ${snapshot}`, error);
+    // Write the CSV data to the file
+    fs.writeFileSync(outputPath, csv);
+    console.log(`CSV file written successfully for ${tier}`);
+  } catch (err) {
+    console.error(`CSV file FAILED for ${tier}`, err);
   }
 }
+
+
+async function extractAllUsageStats(tier) {
+  const allPokemonData = []; // Create an array to store the data from all snapshots
+  for (const snapshot of snapshots) {
+    const pokemonData = await extractUsageStats(snapshot, tier);
+    if (pokemonData !== undefined) {
+      allPokemonData.push(pokemonData); // Add the data from this snapshot to the array
+    }
+  }
+  await writePokemonDataToCSV(allPokemonData, tier);
+}
+
+
 async function extractUsageStats(snapshot, tier) {
   return new Promise(async (resolve, reject) => {
     const url = `https://www.smogon.com/stats/${snapshot}/${tier}.txt`;
-
     try {
     
       request(url, (error, response, html) => {
@@ -245,8 +258,7 @@ async function extractUsageStats(snapshot, tier) {
             // Store the data in an object
             pokemonData[pokemonName] = {
               usage: usageRate,
-              snapshot: `${cleanedSnapshot}`,
-              tier: `${tier}`,
+              snapshot: `${cleanedSnapshot}`
             };
           }
 
@@ -255,14 +267,12 @@ async function extractUsageStats(snapshot, tier) {
             if (!(pokemonName in pokemonData)) {
               pokemonData[pokemonName] = {
                 usage: 0,
-                snapshot: `${cleanedSnapshot}`,
-                tier: `${tier}`,
+                snapshot: `${cleanedSnapshot}`
               };
             }
           });
 
-          addPokemonDataToXLS(pokemonData, tier, snapshot); // Add the data to the XLSX file
-          resolve(); // Resolve the promise when processing is done
+          resolve(pokemonData); // Resolve the promise when processing is done
         } else {
           console.error(`Error extracting data for: ${tier} ${snapshot}`, error);
           resolve(); // Resolve the promise to continue processing other promises
@@ -325,6 +335,7 @@ async function updateImageNumberOfFormeMons() {
   });
 }
 
+
 async function processAllData() {
   await getPokemonAttributesFromPokedex(); // Fetch Pokemon attributes first
   await updateImageNumberOfFormeMons()  // Update the image numbers of forme mons
@@ -334,20 +345,8 @@ async function processAllData() {
   await WritePokedex(); // Then write the Pokedex
 
   for (const tier of tiers) {
-
-    //Order is important here, because the data is ordered
-    await extractUsageStats('2022-11/', tier);
-    await extractUsageStats('2022-12/', tier);
-    await extractUsageStats('2023-01/', tier);
-    await extractUsageStats('2023-02/', tier);
-    await extractUsageStats('2023-03/', tier);
-    await extractUsageStats('2023-04/', tier);
-    await extractUsageStats('2023-05/', tier);
-    await extractUsageStats('2023-06/', tier);
-    await extractUsageStats('2023-07/', tier);
-    await extractUsageStats('2023-08/', tier);
-    await extractUsageStats('2023-09/', tier);
+    await extractAllUsageStats(tier);
   }
+  outputMetadataFile();
 }
-
 processAllData();

@@ -9,9 +9,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Cloud Storage and get a reference to the service
-const spaceRef = ref(getStorage(app), 'smogon-stats.xls');
-
 // Object to store all Pokémon details such as nam and image offsets
 let allPokedexDetails = {
     name: [],
@@ -25,78 +22,87 @@ let sheetDataCache = {}; // Cache for storing sheet data
 
 let uniqueSnapshots = []; // Array to store unique snapshot values
 
+let firstSelectionChanged = false; //flag to check if the default empty selection has changed
+
 const sheetDropdown = document.getElementById('sheet-dropdown');
 let selectedSheetName;
 let minDateToMaxDate;
-let slicedXAxis;
 const searchInput = document.getElementById('search-input');
 const suggestionsList = document.getElementById('suggestions-list');
 const graphContainer = document.getElementById('pokemon-graph');
 const minDataDropdown = document.getElementById('min-data-dropdown');
 const maxDataDropdown = document.getElementById('max-data-dropdown');
-const DateDataDropdowns = document.getElementById('date-data-dropdowns');
+const flexDirectionColumn = document.getElementById('flex-direction-column');
 const clearAllButton = document.getElementById('clear-all-button');
 const populateTop5Button = document.getElementById('populate-top-5-button');
 const populateTop10Button = document.getElementById('populate-top-10-button');
 const populateTop25Button = document.getElementById('populate-top-25-button');
 const searchResults = document.getElementById('search-results');
+const selectTierText = document.getElementById('select-tier-text');
+
 
 
 
 // JavaScript for handling the search functionality
 document.addEventListener('DOMContentLoaded', function(){
+    updateGraph();
     getAllPokedexDetails();
     getAllSheetNames();
-    getTierUsages();
-    initializePage();
+    searchInput.addEventListener('input', handleSearchInput);
+    suggestionsList.addEventListener('click', handleSuggestionClick);
     populateTop5Button.addEventListener('click', populateTop5Button.addEventListener('click', () => populateTopPokemon(5)));
     populateTop10Button.addEventListener('click', populateTop10Button.addEventListener('click', () => populateTopPokemon(10)));
     populateTop25Button.addEventListener('click', populateTop25Button.addEventListener('click', () => populateTopPokemon(25)));
     clearAllButton.addEventListener('click', clearAllSelectedPokemon);
+    minDataDropdown.addEventListener('change', updateGraph);
+    maxDataDropdown.addEventListener('change', updateGraph);
     toggleClearAllButtonVisibility();
     toggleSearchContainerVisibility();
 });
 
-function getAllPokedexDetails() {
-    // Get the download URL for the file
-    getDownloadURL(spaceRef)
-      .then((url) => {
-        // Now you have the download URL, you can use it to fetch the file
-        fetch(url)
-          .then((response) => response.arrayBuffer()) // Use arrayBuffer for XLSX files
-          .then((data) => {
-            // Parse the XLSX data
-            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
-            const pokedexSheetName = 'Pokedex';
-  
-            // Convert XLSX sheet to an array of objects
-            const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[pokedexSheetName]);
-  
-            // Extract Pokémon names from the sheet data (skip the first row)
-            for (let i = 0; i < sheetData.length; i++) {
-              const row = sheetData[i];
-              const pokemonName = row['Pokemon Name'];
-              const pokemonImageOffsetX = row['Pokemon Image Offset X'];
-              const pokemonImageOffsetY = row['Pokemon Image Offset Y'];
+function isValueEmpty(value){
+    if(value === '' || value === null){
+        selectTierText.style.color="red"
+        selectTierText.style.display = 'block';
+    } else {
+        selectTierText.style.display = 'none';
+    }
 
-              if (pokemonName) {
-                allPokedexDetails.name.push(pokemonName);
-                allPokedexDetails.imageXOffset.push(pokemonImageOffsetX);
-                allPokedexDetails.imageYOffset.push(pokemonImageOffsetY);
-              }
-            }
-          })
-          .catch((error) => {
-            console.error("Error fetching file:", error);
-          });
+    return value === '';
+  }
+
+function getAllPokedexDetails() {
+    const spaceRef = ref(getStorage(app), 'pokedex.csv');
+  
+    return getDownloadURL(spaceRef)
+      .then((url) => {
+        return fetch(url)
+          .then((response) => response.text()); // Read the CSV data as text
+      })
+      .then((csvData) => {
+        const lines = csvData.split('\n');
+  
+        for (let i = 1; i < lines.length; i++) { // Start from the second row (index 1)
+          const data = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/); // Split using comma with lookahead for quoted values
+  
+          // Assuming column A corresponds to index 0, column D to index 3, and column E to index 4
+          const pokemonName = data[0] ? data[0].trim() : '';
+          const pokemonImageOffsetX = data[3] ? parseFloat(data[3].trim()) : 0; // Convert to number or default to 0
+          const pokemonImageOffsetY = data[4] ? parseFloat(data[4].trim()) : 0; // Convert to number or default to 0
+  
+          if (pokemonName) {
+            allPokedexDetails.name.push(pokemonName);
+            allPokedexDetails.imageXOffset.push(pokemonImageOffsetX);
+            allPokedexDetails.imageYOffset.push(pokemonImageOffsetY);
+          }
+        }
       })
       .catch((error) => {
-        console.error("Error getting download URL:", error);
+        console.error("Error reading Pokedex CSV file:", error);
       });
-}
+  }
 
-function GraphErrorMessage(message) {
-
+  function GraphErrorMessage(message) {
     let errorMessageContainer = document.getElementById('error-message');
 
     if (!errorMessageContainer) {
@@ -105,110 +111,70 @@ function GraphErrorMessage(message) {
         errorMessageContainer.id = 'error-message';
         errorMessageContainer.style.fontWeight = "bold";
         errorMessageContainer.style.color = "red";
-        DateDataDropdowns.appendChild(errorMessageContainer);
+        flexDirectionColumn.appendChild(errorMessageContainer);
     }
 
-    errorMessageContainer.innerText = message;
+    if (message === '') {
+        // If the message is empty, remove the errorMessageContainer
+        if (errorMessageContainer) {
+            errorMessageContainer.remove();
+        }
+    } else {
+        // Set the error message if it's not empty
+        errorMessageContainer.innerText = message;
+    }
 }
 
 
-function updateGraph() {
-    // Create data for the selected Pokémon
-    const data = selectedPokemon.map(pokemonName => {
-
-        slicedXAxis = minDateToMaxDate.slice(minDataDropdown.selectedIndex, maxDataDropdown.selectedIndex + 1)
-
+// Function to create data for the selected Pokémon
+function createPokemonData(selectedPokemon, minDataDropdown, maxDataDropdown, sheetDataCache, selectedSheetName) {
+    return selectedPokemon.map(pokemonName => {
+        const slicedXAxis = minDateToMaxDate.slice(minDataDropdown.selectedIndex, maxDataDropdown.selectedIndex + 1);
         const usageData = sheetDataCache[selectedSheetName][pokemonName].usage.slice(minDataDropdown.selectedIndex, maxDataDropdown.selectedIndex + 1);
         const graphXAxis = slicedXAxis || minDateToMaxDate;
 
-        // Check the length of graphXAxis
-        if (Array.isArray(graphXAxis) && graphXAxis.length === 1) {
-            // Clear the error message when there's data
-            GraphErrorMessage('');
-            // If the length is one, create a bar chart
-            return {
-                x: [pokemonName], // Use the Pokémon name as the x-axis value
-                y: usageData,   // Pokémon's usage data for the y-axis
-                type: 'bar',
-                name: pokemonName,
-            };
-        } else if (Array.isArray(graphXAxis) && graphXAxis.length > 1) {
-            // Clear the error message when there's data
-            GraphErrorMessage('');
-            // Otherwise, if it's greater than 1 create a scatter plot
-            return {
-                x: graphXAxis,
-                y: usageData,
-                type: 'scatter',
-                mode: 'lines+markers',
-                name: pokemonName,
-                hovertemplate: `Pokémon: ${pokemonName} <br>Usage: %{y}%`
-            };
-        } else {
-            // Return an empty object when there's no data
-            GraphErrorMessage('Please enter a valid date range');
-            return {};
-        }
+        return createPokemonTrace(pokemonName, graphXAxis, usageData);
     });
+}
 
-    // Check if there is no data in the graph
-    const isNoData = data.length === 0 || data.every(trace => trace === {});
+// Function to create a single Pokémon trace based on data
+function createPokemonTrace(pokemonName, graphXAxis, usageData) {
+    if (Array.isArray(graphXAxis) && graphXAxis.length === 1) {
+        GraphErrorMessage('');
+        return createBarChartTrace(pokemonName, usageData);
+    } else if (Array.isArray(graphXAxis) && graphXAxis.length > 1) {
+        GraphErrorMessage('');
+        return createScatterPlotTrace(pokemonName, graphXAxis, usageData);
+    } else {
+        GraphErrorMessage('Please enter a valid date range...');
+        return {};
+    }
+}
 
-    // Define the layout of the graph
-    const layout = {
-        title: `${formatSheetName(selectedSheetName)}`,
-        xaxis: {
-            title: 'Monthly Snapshot',
-            dtick: 'M1',
-            showline: true,
-            tickfont: {
-                color: 'whitesmoke' // Set the color of the x-axis labels to white
-            },
-            linecolor: 'whitesmoke', // Set the color of the x-axis line to white
-
-                    // Set the x-axis title font color to white
-            titlefont: {
-            color: 'whitesmoke'
-        },
-            // Set the default range mode to nonnegative
-            rangemode: 'nonnegative',
-            showticklabels:!isNoData
-        },
-        yaxis: {
-            title: 'Usage (%)',
-            tickfont: {
-                color: 'whitesmoke' // Set the color of the y-axis labels to white
-            },
-            linecolor: 'whitesmoke', // Set the color of the y-axis line to white
-
-            // Set the x-axis title font color to white
-            titlefont: {
-            color: 'whitesmoke'
-        },
-            // Set the default range mode to nonnegative
-            rangemode: 'nonnegative',
-            showticklabels: !isNoData,
-            // Conditionally set the background grid lines color to white
-            gridcolor: isNoData ? '#0d1b2a' : 'whitesmoke'
-        },
-        hovermode: 'closest', // Enable hover events
-        plot_bgcolor: '#0d1b2a', // Change this to the desired color for the plot area background
-        paper_bgcolor: '#0d1b2a', // Change this to the desired color for the paper background
-            // Set the legend font color to white
-        legend: {
-            font: {
-                color: 'whitesmoke'
-            }
-        },
-        titlefont: {
-            color: 'whitesmoke'
-        },
-        xaxisfont: {
-            color: 'whitesmoke'
-        }
+// Function to create a bar chart trace
+function createBarChartTrace(pokemonName, usageData) {
+    return {
+        x: [pokemonName],
+        y: usageData,
+        type: 'bar',
+        name: pokemonName,
     };
+}
 
-    // Add a custom hover event handler to show only the data point for the current Pokemon being hovered over
+// Function to create a scatter plot trace
+function createScatterPlotTrace(pokemonName, graphXAxis, usageData) {
+    return {
+        x: graphXAxis,
+        y: usageData,
+        type: 'scatter',
+        mode: 'lines+markers',
+        name: pokemonName,
+        hovertemplate: `Pokémon: ${pokemonName} <br>Usage: %{y}%`
+    };
+}
+
+// Function to update the graph container with hover data
+function updateGraphContainerOnHover(graphContainer, data) {
     graphContainer.addEventListener('plotly_hover', (eventData) => {
         if (eventData.points.length > 0) {
             const pointIndex = eventData.points[0].pointIndex;
@@ -220,15 +186,76 @@ function updateGraph() {
             Plotly.update(graphContainer, hoverData);
         }
     });
+}
 
-    // Plot the graph
+function createGraphLayout(isNoData) {
+
+    const whiteColor = 'whitesmoke';
+    const plotBackgroundColor = '#0d1b2a';
+
+    return {
+        title: `${formatSheetName(selectedSheetName)}`,
+        xaxis: {
+            title: 'Monthly Snapshot',
+            dtick: 'M1',
+            showline: true,
+            tickfont: {
+                color: whiteColor
+            },
+            linecolor: whiteColor,
+            titlefont: {
+                color: whiteColor
+            },
+            rangemode: 'nonnegative',
+            showticklabels: !isNoData
+        },
+        yaxis: {
+            title: 'Usage (%)',
+            tickfont: {
+                color: whiteColor
+            },
+            linecolor: whiteColor,
+            titlefont: {
+                color: whiteColor
+            },
+            rangemode: 'nonnegative',
+            showticklabels: !isNoData,
+            gridcolor: isNoData ? plotBackgroundColor : whiteColor
+        },
+        hovermode: 'closest',
+        plot_bgcolor: plotBackgroundColor,
+        paper_bgcolor: plotBackgroundColor,
+        legend: {
+            font: {
+                color: whiteColor
+            }
+        },
+        titlefont: {
+            color: whiteColor
+        },
+        xaxisfont: {
+            color: whiteColor
+        }
+    };
+}
+
+// Main updateGraph function
+function updateGraph() {
+    const data = createPokemonData(selectedPokemon, minDataDropdown, maxDataDropdown, sheetDataCache, selectedSheetName);
+    const isNoData = data.length === 0 || data.every(trace => trace === {});
+    const layout = createGraphLayout(isNoData);
+
+    updateGraphContainerOnHover(graphContainer, data);
     Plotly.newPlot(graphContainer, data, layout);
 }
 
-
-
-
 function handleSearchInput() {
+
+    // Do nothing if the current tier is empty
+    if(isValueEmpty(sheetDropdown.value)){
+        console.log("get here")
+        return;
+    }
 
     const searchTerm = searchInput.value.toLowerCase();
     const matchingSuggestions = allPokedexDetails.name.filter(pokemon => {
@@ -263,53 +290,77 @@ function handleSuggestionClick(event) {
     }
 }
 
+function createPokemonListItem(pokemonName, result, allPokedexDetails) {
+    const listItem = document.createElement('li');
+    const resultPokemonIndex = allPokedexDetails.name.indexOf(result.name);
+    const resultPokemonImageXOffset = allPokedexDetails.imageXOffset[resultPokemonIndex];
+    const resultPokemonImageYOffset = allPokedexDetails.imageYOffset[resultPokemonIndex];
+
+    // Create the div element with the specified style (inside the li)
+    const divElement = createPokemonIcon(resultPokemonImageXOffset, resultPokemonImageYOffset);
+
+    // Create a container for the Pokémon name and remove button
+    const contentContainer = createContentContainer(pokemonName);
+
+    // Create a remove button
+    const removeButton = createRemoveButton();
+
+    // Add a click event listener to the element
+    listItem.addEventListener('click', () => {
+        removePokemon(pokemonName);
+    });
+
+    // Append the div element, content container, and remove button to the list item
+    listItem.appendChild(divElement);
+    listItem.appendChild(contentContainer);
+    listItem.appendChild(removeButton);
+
+    return listItem;
+}
+
+// Function to create a Pokemon icon div element
+function createPokemonIcon(xOffset, yOffset) {
+    const divElement = document.createElement('div');
+    divElement.style.background = `transparent url(https://play.pokemonshowdown.com/sprites/pokemonicons-sheet.png?v14) no-repeat scroll ${xOffset}px ${yOffset}px`;
+    divElement.style.width = '40px';
+    divElement.style.height = '30px';
+    return divElement;
+}
+
+// Function to create a container for Pokemon name and remove button
+function createContentContainer(pokemonName) {
+    const contentContainer = document.createElement('div');
+    contentContainer.textContent = pokemonName;
+    return contentContainer;
+}
+
+// Function to create a remove button
+function createRemoveButton() {
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'X';
+    removeButton.className = 'remove-button';
+    return removeButton;
+}
+
+// Function to remove a Pokemon from the selectedPokemon array and update the display
+function removePokemon(pokemonName) {
+    const index = selectedPokemon.indexOf(pokemonName);
+    if (index !== -1) {
+        selectedPokemon.splice(index, 1);
+        // Update the display and graph
+        updateSelectedPokemonDisplay();
+        toggleSearchContainerVisibility();
+        toggleClearAllButtonVisibility();
+    }
+}
+
+// Main updateSelectedPokemonDisplay function
 function updateSelectedPokemonDisplay() {
     searchResults.innerHTML = '';
-
-    selectedPokemon.forEach(function(pokemonName) {
-    const result = sheetDataCache[selectedSheetName][pokemonName];
-
+    selectedPokemon.forEach(pokemonName => {
+        const result = sheetDataCache[selectedSheetName][pokemonName];
         if (result) {
-            const listItem = document.createElement('li');
-
-            // Get the index of the Pokémon in the allPokedexDetails object
-            let resultPokemonIndex = (allPokedexDetails.name.indexOf(result.name));
-            let resultPokemonImageXOffset = allPokedexDetails.imageXOffset[resultPokemonIndex];
-            let resultPokemonImageYOffset = allPokedexDetails.imageYOffset[resultPokemonIndex];
-            
-            // Create the div element with the specified style (inside the li)
-            const divElement = document.createElement('div');
-            divElement.style.background = `transparent url(https://play.pokemonshowdown.com/sprites/pokemonicons-sheet.png?v14) no-repeat scroll ${resultPokemonImageXOffset}px ${resultPokemonImageYOffset}px`;
-            divElement.style.width = '40px';
-            divElement.style.height = '30px';
-            
-            // Create a container for the Pokémon name and remove button
-            const contentContainer = document.createElement('div');
-            contentContainer.textContent = pokemonName;
-
-            // Create a remove button
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'X';
-            removeButton.className = 'remove-button';
-
-            // Add a click event listener to the element
-            listItem.addEventListener('click', function() {
-                // Remove the Pokémon from the selectedPokemon array
-                const index = selectedPokemon.indexOf(pokemonName);
-                if (index !== -1) {
-                    selectedPokemon.splice(index, 1);
-                    // Update the display and graph
-                    updateSelectedPokemonDisplay();
-                    toggleSearchContainerVisibility();
-                    toggleClearAllButtonVisibility()
-                }
-            });
-
-            // Append the div element, content container, and remove button to the list item
-            listItem.appendChild(divElement);
-            listItem.appendChild(contentContainer);
-            listItem.appendChild(removeButton);
-
+            const listItem = createPokemonListItem(pokemonName, result, allPokedexDetails);
             searchResults.appendChild(listItem);
             toggleClearAllButtonVisibility();
             toggleSearchContainerVisibility();
@@ -323,27 +374,35 @@ function updateSelectedPokemonDisplay() {
 }
 
 function getAllSheetNames() {
-    getDownloadURL(spaceRef)
-        .then((url) => {
-            fetch(url)
-                .then((response) => response.arrayBuffer())
-                .then((data) => {
-                    const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+  const spaceRef = ref(getStorage(app), 'metadata.csv');
 
-                    // Get an array of sheet names from the workbook
-                    const sheetNames = workbook.SheetNames;
+  getDownloadURL(spaceRef)
+    .then((url) => {
+      return fetch(url);
+    })
+    .then((response) => {
+      return response.text();
+    })
+    .then((csvData) => {
+      const lines = csvData.split('\n');
+      const sheetNames = [];
 
-                    // Call the function to populate the dropdown with sheet names
-                    populateSheetDropdown(sheetNames);
-                })
-                .catch((error) => {
-                    console.error("Error fetching file:", error);
-                });
-        })
-        .catch((error) => {
-            console.error("Error getting download URL:", error);
-        });
+      for (let i = 1; i < lines.length; i++) { // Start from the second row (index 1)
+        const data = lines[i].split(',');
+        if (data.length > 0) {
+          const value = data[0].trim(); // Trim spaces and \r characters
+          if (value !== '') {
+            sheetNames.push(value); // Assuming the first column is what you want
+          }
+        }
+      }
+      populateSheetDropdown(sheetNames);
+    })
+    .catch((error) => {
+      console.error('Error reading Metadata CSV file:', error);
+    });
 }
+
 
 // Function to format the sheet name
 function formatSheetName(sheetName) {
@@ -372,21 +431,18 @@ function formatSheetName(sheetName) {
 
 function populateSheetDropdown(sheetNames) {
 
+    sheetNames.unshift("")
+
     // Populate the dropdown with formatted sheet names
     sheetNames.forEach(sheetName => {
-        if (sheetName !== "Pokedex") {
-            const option = document.createElement('option');
-            option.value = sheetName;
-            option.text = formatSheetName(sheetName);
-            sheetDropdown.appendChild(option);
-        }
+        const option = document.createElement('option');
+        option.value = sheetName;
+        option.text = formatSheetName(sheetName);
+        sheetDropdown.appendChild(option);
     });
 
-    // Set the initially selected sheet
-    selectedSheetName = sheetNames[1]; // This will be first sheet that isn't pokedex
     // Add an event listener to the dropdown to handle sheet selection
     sheetDropdown.addEventListener('change', handleSheetSelection);
-
 }
 
 function getMinMaxDatesFromCurrentCache() {
@@ -394,7 +450,6 @@ function getMinMaxDatesFromCurrentCache() {
     if (!sheetData) {
         return; // Selected sheet data not found in cache, do nothing
     }
-
     // Get all snapshots from the selected sheet's data
     const allSnapshots = [];
     for (const pokemonKey in sheetData) {
@@ -431,113 +486,153 @@ function getMinMaxDatesFromCurrentCache() {
     // Array of snapshots to be used for the graph's x-axis
     minDateToMaxDate = uniqueSnapshots;
 
-    // Add event listeners to handle changes in "Min Data" and "Max Data" dropdowns
-    minDataDropdown.addEventListener('change', updateGraph);
-    maxDataDropdown.addEventListener('change', updateGraph);
 }
 
 function handleSheetSelection() {
+  selectedSheetName = sheetDropdown.value;
 
+  // Check if this is the first selection change
+  if (!firstSelectionChanged) {
+    firstSelectionChanged = true;
+    removeEmptyStringOptions();
+  }
 
-
-    selectedSheetName = sheetDropdown.value;
-    getTierUsages()
+  // Continue with your code
+  getTierUsages(selectedSheetName);
 }
 
-function getTierUsages() {
-    // Check if the data for the selected sheet is already in the cache
-    if (sheetDataCache[selectedSheetName]) {
-        // Data for this sheet is already in the cache, update the graph
-        getMinMaxDatesFromCurrentCache()
-        updateGraph();
+function removeEmptyStringOptions() {
+  const emptyStringOptions = [...sheetDropdown.options].filter(option => option.value === "");
+  emptyStringOptions.forEach(option => option.remove());
+}
+
+function getTierUsages(tier) {
+    //Escape if the tier is empty (it is by default)
+    if (isValueEmpty(tier)) {
         return;
     }
 
+    // Check if the data for the selected sheet is already in the cache
+    if (sheetDataCache[selectedSheetName]) {
+      // Data for this sheet is already in the cache, update the graph
+      getMinMaxDatesFromCurrentCache();
+      updateGraph();
+      return;
+    }
+  
+    const spaceRef = ref(getStorage(app), `${tier}.csv`);
     // Data for this sheet is not in the cache, fetch it
-    // Get the download URL for the file
     getDownloadURL(spaceRef)
-        .then((url) => {
-            // Now you have the download URL, you can use it to fetch the file
-            fetch(url)
-                .then((response) => response.arrayBuffer()) // Use arrayBuffer for XLSX files
-                .then((data) => {
-                    // Parse the XLSX data
-                    const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
-                    const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[selectedSheetName]);
-
-                    sheetData.forEach((row) => {
-                        const pokemonName = row['Pokemon Name'];
-
-                        // Create a new object for this sheet's data if it doesn't exist
-                        if (!sheetDataCache[selectedSheetName]) {
-                            sheetDataCache[selectedSheetName] = {};
-                        }
-
-                        if (!sheetDataCache[selectedSheetName][pokemonName]) {
-                            sheetDataCache[selectedSheetName][pokemonName] = {
-                                name: pokemonName,
-                                usage: [],
-                                snapshot: []
-                                
-                            };
-                        }
-
-                        sheetDataCache[selectedSheetName][pokemonName].usage.push(row.Usage);
-                        sheetDataCache[selectedSheetName][pokemonName].snapshot.push(row.Snapshot);
-
-                    });
-                    getMinMaxDatesFromCurrentCache()
-                    updateGraph();
-                })
-                .catch((error) => {
-                    console.error("Error fetching file:", error);
-                });
-        })
-        .catch((error) => {
-            console.error("Error getting download URL:", error);
-        });
-}
-
-
-function populateTopPokemon(topPokemonNumber) {
+      .then((url) => {
+        // Now you have the download URL, you can use it to fetch the file
+        fetch(url)
+          .then((response) => response.text()) // Read the CSV data as text
+          .then((csvData) => {
+            const lines = csvData.split('\n');
+  
+            lines.forEach((line, index) => {
+              if (index === 0) {
+                // Skip the header row
+                return;
+              }
+  
+              const data = line.split(',');
+  
+              if (data.length >= 3) {
+                // Assuming column A corresponds to index 0, column B to index 1, and column C to index 2
+                const pokemonName = data[0].trim();
+                const usageRate = data[1].trim();
+                const snapshot = data[2].trim();
+  
+                // Create a new object for this sheet's data if it doesn't exist
+                if (!sheetDataCache[selectedSheetName]) {
+                  sheetDataCache[selectedSheetName] = {};
+                }
+  
+                if (!sheetDataCache[selectedSheetName][pokemonName]) {
+                  sheetDataCache[selectedSheetName][pokemonName] = {
+                    name: pokemonName,
+                    usage: [],
+                    snapshot: [],
+                  };
+                }
+                sheetDataCache[selectedSheetName][pokemonName].usage.push(usageRate);
+                sheetDataCache[selectedSheetName][pokemonName].snapshot.push(snapshot);
+              }
+            });
+            getMinMaxDatesFromCurrentCache();
+            updateGraph();
+          })
+          .catch((error) => {
+            console.error("Error fetching file:", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error getting download URL:", error);
+      });
+  }  
+  
+function getSelectedSheetData() {
     // Ensure that the max date is selected
     const selectedMaxDate = maxDataDropdown.selectedIndex;
     // Check if data for the selected sheet is in the cache
     if (!selectedSheetName || !selectedMaxDate || !sheetDataCache[selectedSheetName]) {
-      return;
+        return null;
     }
-  
+
     // Get the sheet data for the selected sheet
-    const sheetData = sheetDataCache[selectedSheetName];
+    return sheetDataCache[selectedSheetName];
+}
+
+function filterSheetData(sheetData, selectedMaxDate) {
     const sheetDataForSelectedIndex = {};
-  
+
     // Populate sheetDataForSelectedIndex as before
     Object.keys(sheetData).forEach((key) => {
-      if (
-        sheetData[key]["usage"].length > selectedMaxDate &&
-        sheetData[key]["snapshot"].length > selectedMaxDate
-      ) {
-        sheetDataForSelectedIndex[key] = {
-          "usage": sheetData[key]["usage"][selectedMaxDate],
-          "snapshot": sheetData[key]["snapshot"][selectedMaxDate]
-        };
-      }
+        if (
+            sheetData[key]["usage"].length > selectedMaxDate &&
+            sheetData[key]["snapshot"].length > selectedMaxDate
+        ) {
+            sheetDataForSelectedIndex[key] = {
+                "usage": sheetData[key]["usage"][selectedMaxDate],
+                "snapshot": sheetData[key]["snapshot"][selectedMaxDate]
+            };
+        }
     });
-  
+
+    return sheetDataForSelectedIndex;
+}
+
+function getTopPokemon(sheetDataForSelectedIndex, topPokemonNumber) {
     // Convert sheetDataForSelectedIndex to an array of key-value pairs
     const sheetDataArray = Object.entries(sheetDataForSelectedIndex);
-  
+
     // Sort the array based on the "usage" values in descending order
     sheetDataArray.sort((a, b) => b[1]["usage"] - a[1]["usage"]);
-  
+
     // Convert the sorted array back to an object
     const sortedSheetData = Object.fromEntries(sheetDataArray);
-  
+
     // Get the top N keys
-    selectedPokemon = Object.keys(sortedSheetData).slice(0, topPokemonNumber);
+    return Object.keys(sortedSheetData).slice(0, topPokemonNumber);
+}
+
+function populateTopPokemon(topPokemonNumber) {
+    const sheetData = getSelectedSheetData();
+    const isSheetDataNull = isValueEmpty(sheetData);
+    if (isSheetDataNull && !sheetData) { // Check both conditions
+        return;
+    }
+    else if(!isSheetDataNull && !sheetData){
+        isValueEmpty(sheetData);
+        return;
+    }
+
+    const sheetDataForSelectedIndex = filterSheetData(sheetData, maxDataDropdown.selectedIndex);
+    selectedPokemon = getTopPokemon(sheetDataForSelectedIndex, topPokemonNumber);
 
     updateSelectedPokemonDisplay();
-  }
+}
 
 // Function to clear all selected Pokémon
 function clearAllSelectedPokemon() {
@@ -565,15 +660,6 @@ function toggleSearchContainerVisibility(){
     }
 }
 
-
-function initializePage() {
-
-    // Initialize an empty graph when the page loads
-    updateGraph();
-
-    searchInput.addEventListener('input', handleSearchInput);
-    suggestionsList.addEventListener('click', handleSuggestionClick);
-}
 
 
 
