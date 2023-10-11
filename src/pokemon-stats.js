@@ -21,7 +21,9 @@ const tiers = [
                 'gen9lc-1630',
                 'gen9monotype-1630',
                 'gen9nationaldex-1630',
-                'gen9nationaldexmonotype-1630'
+                'gen9nationaldexmonotype-1630',
+                'gen9doublesou-1695',
+                'gen9doublesuu-1630'
               ];
 
 const snapshots = [
@@ -44,7 +46,7 @@ const request = require('request');
 const cheerio = require('cheerio');
 
 function outputMetadataFile() {
-  
+
   const csvData = [['Sheets'], ...tiers.map((tier) => [tier])];
 
   const csv = Papa.unparse(csvData, { header: true });

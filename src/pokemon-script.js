@@ -39,7 +39,7 @@ const populateTop10Button = document.getElementById('populate-top-10-button');
 const populateTop25Button = document.getElementById('populate-top-25-button');
 const searchResults = document.getElementById('search-results');
 const selectTierText = document.getElementById('select-tier-text');
-
+const searchSectionContainer= document.getElementById("search-section-container")
 
 
 
@@ -102,7 +102,39 @@ function getAllPokedexDetails() {
       });
   }
 
-  function GraphErrorMessage(message) {
+  function boxErrorMessage(message) {
+    let boxErrorMessageContainer = document.getElementById('error-message-box');
+
+    if (!boxErrorMessageContainer) {
+        // Create the error message container if it doesn't exist
+        boxErrorMessageContainer = document.createElement('div');
+        boxErrorMessageContainer.id = 'error-message-box';
+
+        // Customize the font size and family
+        boxErrorMessageContainer.style.fontSize = '3rem'; // Set the desired font size
+        boxErrorMessageContainer.style.fontFamily = 'Pixelify Sans, sans-serif'; // Set the pixel-style font family
+
+        // Set other styles
+        boxErrorMessageContainer.style.fontWeight = 'bold';
+        boxErrorMessageContainer.style.color = 'red';
+        boxErrorMessageContainer.style.textAlign = 'center';
+
+        searchSectionContainer.appendChild(boxErrorMessageContainer);
+    }
+
+    if (message === '') {
+        // If the message is empty, remove the boxErrorMessageContainer
+        if (boxErrorMessageContainer) {
+            boxErrorMessageContainer.remove();
+        }
+    } else {
+        // Set the error message if it's not empty
+        boxErrorMessageContainer.innerText = message;
+    }
+}
+
+
+  function graphErrorMessage(message) {
     let errorMessageContainer = document.getElementById('error-message');
 
     if (!errorMessageContainer) {
@@ -140,13 +172,13 @@ function createPokemonData(selectedPokemon, minDataDropdown, maxDataDropdown, sh
 // Function to create a single Pokémon trace based on data
 function createPokemonTrace(pokemonName, graphXAxis, usageData) {
     if (Array.isArray(graphXAxis) && graphXAxis.length === 1) {
-        GraphErrorMessage('');
+        graphErrorMessage('');
         return createBarChartTrace(pokemonName, usageData);
     } else if (Array.isArray(graphXAxis) && graphXAxis.length > 1) {
-        GraphErrorMessage('');
+        graphErrorMessage('');
         return createScatterPlotTrace(pokemonName, graphXAxis, usageData);
     } else {
-        GraphErrorMessage('Please enter a valid date range...');
+        graphErrorMessage('Please enter a valid date range...');
         return {};
     }
 }
@@ -253,7 +285,6 @@ function handleSearchInput() {
 
     // Do nothing if the current tier is empty
     if(isValueEmpty(sheetDropdown.value)){
-        console.log("get here")
         return;
     }
 
@@ -274,19 +305,33 @@ function handleSearchInput() {
     });
 }
 
+function checkSelectedPokemonCount() {
+    const errorMessage = "Your box is full!";
+    if (selectedPokemon.length > 29) {
+        boxErrorMessage(errorMessage); // Display error message
+      return false; // Return false to indicate an error
+    } else {
+        boxErrorMessage(''); // Clear any previous error message
+      return true; // Return true to indicate no error
+    }
+  }
+
 function handleSuggestionClick(event) {
     if (event.target.tagName === 'LI') {
         const selectedPokemonName = event.target.textContent;
-        // Check if the Pokémon is not already selected
-        if (!selectedPokemon.includes(selectedPokemonName)) {
-            selectedPokemon.push(selectedPokemonName);
-            updateSelectedPokemonDisplay();
-        } 
-
-        // Hide the suggestions list if the input is empty
-        suggestionsList.style.display = 'none';
-        searchInput.value = ''; // Clear the search input
-        suggestionsList.innerHTML = ''; // Clear suggestions
+        
+        if (checkSelectedPokemonCount()) {
+            // Check if the Pokémon is not already selected
+            if (!selectedPokemon.includes(selectedPokemonName)) {
+                selectedPokemon.push(selectedPokemonName);
+                updateSelectedPokemonDisplay();
+            }
+            
+            // Hide the suggestions list if the input is empty
+            suggestionsList.style.display = 'none';
+            searchInput.value = ''; // Clear the search input
+            suggestionsList.innerHTML = ''; // Clear suggestions
+        }
     }
 }
 
@@ -348,6 +393,7 @@ function removePokemon(pokemonName) {
     if (index !== -1) {
         selectedPokemon.splice(index, 1);
         // Update the display and graph
+        boxErrorMessage('');
         updateSelectedPokemonDisplay();
         toggleSearchContainerVisibility();
         toggleClearAllButtonVisibility();
@@ -619,19 +665,20 @@ function getTopPokemon(sheetDataForSelectedIndex, topPokemonNumber) {
 
 function populateTopPokemon(topPokemonNumber) {
     const sheetData = getSelectedSheetData();
-    const isSheetDataNull = isValueEmpty(sheetData);
-    if (isSheetDataNull && !sheetData) { // Check both conditions
+
+    if (!sheetData) { // Check both conditions
+        if(!firstSelectionChanged){
+            isValueEmpty(sheetData);
+        }
         return;
     }
-    else if(!isSheetDataNull && !sheetData){
-        isValueEmpty(sheetData);
-        return;
-    }
+
 
     const sheetDataForSelectedIndex = filterSheetData(sheetData, maxDataDropdown.selectedIndex);
     selectedPokemon = getTopPokemon(sheetDataForSelectedIndex, topPokemonNumber);
 
     updateSelectedPokemonDisplay();
+    boxErrorMessage('');
 }
 
 // Function to clear all selected Pokémon
