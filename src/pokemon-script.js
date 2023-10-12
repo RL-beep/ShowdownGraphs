@@ -201,7 +201,7 @@ function createScatterPlotTrace(pokemonName, graphXAxis, usageData) {
         type: 'scatter',
         mode: 'lines+markers',
         name: pokemonName,
-        hovertemplate: `Pokémon: ${pokemonName} <br>Usage: %{y}%`
+        hovertemplate: `Pokémon: ${pokemonName} <br>Usage: %{y}% <extra></extra> `,
     };
 }
 
