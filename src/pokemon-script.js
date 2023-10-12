@@ -24,6 +24,8 @@ let uniqueSnapshots = []; // Array to store unique snapshot values
 
 let firstSelectionChanged = false; //flag to check if the default empty selection has changed
 
+let graphXAxis;
+
 const sheetDropdown = document.getElementById('sheet-dropdown');
 let selectedSheetName;
 let minDateToMaxDate;
@@ -163,7 +165,7 @@ function createPokemonData(selectedPokemon, minDataDropdown, maxDataDropdown, sh
     return selectedPokemon.map(pokemonName => {
         const slicedXAxis = minDateToMaxDate.slice(minDataDropdown.selectedIndex, maxDataDropdown.selectedIndex + 1);
         const usageData = sheetDataCache[selectedSheetName][pokemonName].usage.slice(minDataDropdown.selectedIndex, maxDataDropdown.selectedIndex + 1);
-        const graphXAxis = slicedXAxis || minDateToMaxDate;
+        graphXAxis = slicedXAxis || minDateToMaxDate;
 
         return createPokemonTrace(pokemonName, graphXAxis, usageData);
     });
@@ -221,25 +223,36 @@ function updateGraphContainerOnHover(graphContainer, data) {
 }
 
 function createGraphLayout(isNoData) {
-
     const whiteColor = 'whitesmoke';
     const plotBackgroundColor = '#0d1b2a';
+    let tickInterval = 1; // Default to 1 month
+
+    if (!graphXAxis){
+        graphXAxis = []
+    }
+
+    if (graphXAxis.length > 24) {
+        tickInterval = 12; // Change to 12 months for yearly ticks
+    }
+
 
     return {
         title: `${formatSheetName(selectedSheetName)}`,
         xaxis: {
             title: 'Monthly Snapshot',
-            dtick: 'M1',
+            dtick: `M${tickInterval}`,
             showline: true,
             tickfont: {
-                color: whiteColor
+                color: whiteColor,
+                size: 10
             },
             linecolor: whiteColor,
             titlefont: {
                 color: whiteColor
             },
             rangemode: 'nonnegative',
-            showticklabels: !isNoData
+            showticklabels: !isNoData,
+            titlepad: 30
         },
         yaxis: {
             title: 'Usage (%)',
@@ -619,10 +632,9 @@ function getTierUsages(tier) {
   }  
   
 function getSelectedSheetData() {
-    // Ensure that the max date is selected
-    const selectedMaxDate = maxDataDropdown.selectedIndex;
+
     // Check if data for the selected sheet is in the cache
-    if (!selectedSheetName || !selectedMaxDate || !sheetDataCache[selectedSheetName]) {
+    if (!selectedSheetName || !sheetDataCache[selectedSheetName]) {
         return null;
     }
 
@@ -665,7 +677,6 @@ function getTopPokemon(sheetDataForSelectedIndex, topPokemonNumber) {
 
 function populateTopPokemon(topPokemonNumber) {
     const sheetData = getSelectedSheetData();
-
     if (!sheetData) { // Check both conditions
         if(!firstSelectionChanged){
             isValueEmpty(sheetData);

@@ -11,24 +11,129 @@ let pokemonNamesPromise = null; // Cache for getPokemonAttributesFromPokedex res
 
  // This will decide which tiers to fetch data from
 const tiers = [ 
-                'gen9ubers-1630',
-                'gen9ou-1695',
-                'gen9uu-1630',
-                'gen9ru-1630',
-                'gen9nu-1630',
-                'gen9pu-1630',
-                'gen9zu-1630',
-                'gen9lc-1630',
-                'gen9monotype-1630',
-                'gen9nationaldex-1630',
-                'gen9nationaldexmonotype-1630',
-                'gen9doublesou-1695',
-                'gen9doublesuu-1630',
-                'gen9cap-1630'
+                ['gen9ubers-1630'],
+                ['gen9ou-1695'],
+                ['gen9uu-1630'],
+                ['gen9ru-1630'],
+                ['gen9nu-1630'],
+                ['gen9pu-1630'],
+                ['gen9zu-1630'],
+                ['gen9lc-1630'],
+                ['gen9monotype-1630'],
+                ['gen9nationaldex-1630'],
+                ['gen9nationaldexmonotype-1630'],
+                ['gen9doublesou-1695'],
+                ['gen9doublesuu-1630'],
+                ['gen9cap-1630'],
+                ['gen8ou-1630','gen8ou-1695'],
+                ['gen7ou-1630','gen7ou-1695'],
+                ['gen6ou-1630','gen6ou-1695'],
+                ['gen5ou-1630','gen5ou-1695'],
+                ['gen4ou-1630','gen4ou-1695'],
+                ['gen3ou-1630','gen3ou-1695'],
+                ['gen2ou-1630','gen2ou-1695'],
+                ['gen1ou-1630','gen1ou-1695']
               ];
 
 const snapshots = [
-                '2022-11/',
+                '2014-11/',
+                '2014-12/',
+                '2015-01/',
+                '2015-02/',
+                '2015-03/',
+                '2015-04/',
+                '2015-05/',
+                '2015-06/',
+                '2015-07/',
+                '2015-08/',
+                '2015-09/',
+                '2015-10/',
+                '2015-11/',
+                '2015-12/',
+                '2016-01/',
+                '2016-02/',
+                '2016-03/',
+                '2016-04/',
+                '2016-05/',
+                '2016-06/',
+                '2016-07/',
+                '2016-08/',
+                '2016-09/',
+                '2016-10/',
+                '2016-11/',
+                '2016-12/',
+                '2017-01/',
+                '2017-02/',
+                '2017-03/',
+                '2017-04/',
+                '2017-05/',
+                '2017-06/',
+                '2017-07/',
+                '2017-08/',
+                '2017-09/',
+                '2017-10/',
+                '2017-11/',
+                '2017-12/',
+                '2018-01/',
+                '2018-02/',
+                '2018-03/',
+                '2018-04/',
+                '2018-05/',
+                '2018-06/',
+                '2018-07/',
+                '2018-08/',
+                '2018-09/',
+                '2018-10/',
+                '2018-11/',
+                '2018-12/',
+                '2019-01/',
+                '2019-02/',
+                '2019-03/',
+                '2019-04/',
+                '2019-05/',
+                '2019-06/',
+                '2019-07/',
+                '2019-08/',
+                '2019-09/',
+                '2019-10/',
+                '2019-11/',
+                '2019-12/',
+                '2020-01/',
+                '2020-02/',
+                '2020-03/',
+                '2020-04/',
+                '2020-05/',
+                '2020-06/',
+                '2020-07/',
+                '2020-08/',
+                '2020-09/',
+                '2020-10/',
+                '2020-11/',
+                '2020-12/',
+                '2021-01/',
+                '2021-02/',
+                '2021-03/',
+                '2021-04/',
+                '2021-05/',
+                '2021-06/',
+                '2021-07/',
+                '2021-08/',
+                '2021-09/',
+                '2021-10/',
+                '2021-11/',
+                '2021-12/',
+                '2022-01/',
+                '2022-02/',
+                '2022-03/',
+                '2022-04/',
+                '2022-05/',
+                '2022-06/',
+                '2022-07/',
+                '2022-08/',
+                '2022-09/',
+                '2022-10/',
+                /* Gen 9 OU starts here */
+                '2022-11/', 
                 '2022-12/',
                 '2023-01/',
                 '2023-02/',
@@ -47,8 +152,8 @@ const request = require('request');
 const cheerio = require('cheerio');
 
 function outputMetadataFile() {
-
-  const csvData = [['Sheets'], ...tiers.map((tier) => [tier])];
+  const firstTiers = tiers.map((tier) => tier[0]); // Get the first element from each sub-array
+  const csvData = [['Sheets'], ...firstTiers.map((tier) => [tier])];
 
   const csv = Papa.unparse(csvData, { header: true });
 
@@ -125,7 +230,6 @@ async function getPokemonAttributesFromPokedex() {
               pokemonAttributes.formes.push("CAP")
             }
           }
-          console.log(JSON.stringify(pokemonAttributes, null, 2)); 
           resolve(pokemonAttributes); // Resolve the promise with the populated arrays
         })
         .catch(function (error) {
@@ -218,7 +322,7 @@ async function writePokemonDataToCSV(data,tier) {
   const csv = Papa.unparse(csvData);
 
   // Specify the CSV file name
-  const outputPath = `ShowdownGraphs/files/${tier}.csv`;
+  const outputPath = `ShowdownGraphs/files/${tier[0]}.csv`;
 
   try {
     // Write the CSV data to the file
@@ -244,19 +348,14 @@ async function extractAllUsageStats(tier) {
 
 async function extractUsageStats(snapshot, tier) {
   return new Promise(async (resolve, reject) => {
-    const url = `https://www.smogon.com/stats/${snapshot}/${tier}.txt`;
-    try {
-    
+    const promises = tier.map((tierThreshold) => new Promise((resolveTier, rejectTier) => {
+      const url = `https://www.smogon.com/stats/${snapshot}/${tierThreshold}.txt`;
+
       request(url, (error, response, html) => {
         if (!error && response.statusCode === 200) {
-          // Parse the HTML content of the page using Cheerio
           const $ = cheerio.load(html);
-          // Remove the dash character from the snapshot
           const cleanedSnapshot = snapshot.replace('/', '');
-
-          // Find the body content of the page
           const bodyContent = $.text();
-          // Use regular expressions to extract Pokémon names and their usage rates
           const regex = /\|\s*(\d+)\s*\|\s*([^|]+)\s*\|\s*([\d.]+%)\s*\|\s*(\d+)\s*\|\s*([\d.]+%)\s*\|\s*(\d+)\s*\|\s*([\d.]+%)\s*\|/g;
           const pokemonData = {};
 
@@ -264,34 +363,49 @@ async function extractUsageStats(snapshot, tier) {
           while ((match = regex.exec(bodyContent)) !== null) {
             const pokemonName = match[2].trim();
             const usageRate = parseFloat(match[3]);
-
-            // Store the data in an object
             pokemonData[pokemonName] = {
               usage: usageRate,
-              snapshot: `${cleanedSnapshot}`
+              snapshot: `${cleanedSnapshot}`,
             };
           }
 
-          // Check if each Pokémon in pokemonAttributes exists in pokemonData, and if not, add it with a usage of 0
           pokemonAttributes.names.forEach((pokemonName) => {
             if (!(pokemonName in pokemonData)) {
               pokemonData[pokemonName] = {
                 usage: 0,
-                snapshot: `${cleanedSnapshot}`
+                snapshot: `${cleanedSnapshot}`,
               };
             }
           });
 
-          resolve(pokemonData); // Resolve the promise when processing is done
+          resolveTier(pokemonData);
         } else {
-          console.error(`Error extracting data for: ${tier} ${snapshot}`, error);
-          resolve(); // Resolve the promise to continue processing other promises
+          console.error(`Error extracting data for: ${tierThreshold} ${snapshot}`, error);
+          resolveTier();
         }
       });
-    } catch (error) {
-      console.error(`Error in extractUsageStats for: ${tier} ${snapshot}`, error);
-      resolve(); // Resolve the promise to continue processing other promises
-    }
+    }));
+
+    Promise.all(promises)
+      .then((results) => {
+        // Concatenate the results from all tiers
+        const concatenatedData = results.reduce((concatenated, tierData) => {
+          for (const pokemonName in tierData) {
+            if (concatenated[pokemonName]) {
+              concatenated[pokemonName].usage += tierData[pokemonName].usage;
+            } else {
+              concatenated[pokemonName] = tierData[pokemonName];
+            }
+          }
+          return concatenated;
+        }, {});
+
+        resolve(concatenatedData);
+      })
+      .catch((error) => {
+        console.error('Error processing tier data', error);
+        resolve();
+      });
   });
 }
 
