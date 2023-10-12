@@ -23,7 +23,8 @@ const tiers = [
                 'gen9nationaldex-1630',
                 'gen9nationaldexmonotype-1630',
                 'gen9doublesou-1695',
-                'gen9doublesuu-1630'
+                'gen9doublesuu-1630',
+                'gen9cap-1630'
               ];
 
 const snapshots = [
@@ -91,7 +92,7 @@ async function getPokemonAttributesFromPokedex() {
       "Busted","Busted-Totem","Original","Gulping","Gorging","Low-Key","Low-Key-Gmax","Antique",
       "Noice","Hangry","Eternamax","Rapid-Strike-Gmax","Dada","Four","Blue","Yellow","Hero",
       "Three-Segment","Roaming","Artisan","Masterpiece","Teal-Tera","Wellspring-Tera","Hearthflame-Tera",
-      "Cornerstone-Tera","CAP"];
+      "Cornerstone-Tera"];
 
       // Make an HTTP GET request to the URL
       fetch(url)
@@ -107,7 +108,7 @@ async function getPokemonAttributesFromPokedex() {
           for (const key in data) {
             if (
               data.hasOwnProperty(key) &&
-              !specificFormsToDiscard.includes(data[key].forme) &&
+              !specificFormsToDiscard.includes(data[key].forme) && 
               data[key].isNonstandard !== "CAP" &&
               data[key].isNonstandard !== "Custom" &&
               data[key].name !== "Pikachu-Alola" &&
@@ -117,7 +118,14 @@ async function getPokemonAttributesFromPokedex() {
               pokemonAttributes.ImageNumbers.push(data[key].num);
               pokemonAttributes.formes.push(data[key].forme);
             }
+            //Add Cap as a custom form:
+            if(data[key].isNonstandard === "CAP" ){
+              pokemonAttributes.names.push(data[key].name);
+              pokemonAttributes.ImageNumbers.push(data[key].num);
+              pokemonAttributes.formes.push("CAP")
+            }
           }
+          console.log(JSON.stringify(pokemonAttributes, null, 2)); 
           resolve(pokemonAttributes); // Resolve the promise with the populated arrays
         })
         .catch(function (error) {
@@ -174,7 +182,7 @@ async function WritePokedex() {
         'Pokemon Image Offset X': pokemonAttributes.imageOffsetX[index],
         'Pokemon Image Offset Y': pokemonAttributes.imageOffsetY[index]
       }));
-
+      
       // Convert the array of objects to a CSV-formatted string
       const csvData = Papa.unparse(dataToWrite);
 
