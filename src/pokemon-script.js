@@ -166,6 +166,7 @@ function createPokemonData(selectedPokemon, minDataDropdown, maxDataDropdown, sh
         const slicedXAxis = minDateToMaxDate.slice(minDataDropdown.selectedIndex, maxDataDropdown.selectedIndex + 1);
         const usageData = sheetDataCache[selectedSheetName][pokemonName].usage.slice(minDataDropdown.selectedIndex, maxDataDropdown.selectedIndex + 1);
         graphXAxis = slicedXAxis || minDateToMaxDate;
+        // console.log(usageData)
 
         return createPokemonTrace(pokemonName, graphXAxis, usageData);
     });
@@ -225,23 +226,47 @@ function updateGraphContainerOnHover(graphContainer, data) {
 function createGraphLayout(isNoData) {
     const whiteColor = 'whitesmoke';
     const plotBackgroundColor = '#0d1b2a';
-    let tickInterval = 1; // Default to 1 month
 
-    if (!graphXAxis){
-        graphXAxis = []
+    if (!graphXAxis) {
+        graphXAxis = [];
     }
 
-    if (graphXAxis.length > 24) {
-        tickInterval = 12; // Change to 12 months for yearly ticks
+    const numTicksToShow = 12; // Set a reasonable limit for the number of tick values
+
+    // Use the length of the graphXAxis array to determine the tick placement
+    const numTicks = graphXAxis.length;
+
+    // Set the default dtick value to auto
+    let dtick = 'M1';
+
+    // If you have enough data points to display monthly ticks and not too many to clutter the x-axis
+    if (numTicks >= 2) {
+        // Calculate the difference between the first and last data points in months
+        const firstDate = new Date(graphXAxis[0]); // Assuming graphXAxis contains date values
+        const lastDate = new Date(graphXAxis[numTicks - 1]);
+        const monthDifference = (lastDate.getFullYear() - firstDate.getFullYear()) * 12 + (lastDate.getMonth() - firstDate.getMonth());
+
+        // If the difference is less than or equal to 12, use monthly ticks
+        if (monthDifference <= 12) {
+            dtick = 'M1';
+        } else {
+            // Calculate how many months to skip between ticks based on the number of data points
+            const monthsToSkip = Math.ceil(monthDifference / (numTicksToShow - 1)); // Adjust this number as needed
+
+            dtick = 'M' + monthsToSkip;
+        }
     }
 
+    const tickValues = getTickValues(graphXAxis, numTicksToShow);
 
     return {
         title: `${formatSheetName(selectedSheetName)}`,
         xaxis: {
             title: 'Monthly Snapshot',
-            dtick: `M${tickInterval}`,
             showline: true,
+            dtick: dtick,
+            tickvals: tickValues, // Set explicit tick values
+            ticktext: tickValues.map(date => new Date(date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })), // Format tick labels as "Mon YYYY"
             tickfont: {
                 color: whiteColor,
                 size: 10
@@ -252,7 +277,7 @@ function createGraphLayout(isNoData) {
             },
             rangemode: 'nonnegative',
             showticklabels: !isNoData,
-            titlepad: 30
+            titlepad: 30,
         },
         yaxis: {
             title: 'Usage (%)',
@@ -265,30 +290,47 @@ function createGraphLayout(isNoData) {
             },
             rangemode: 'nonnegative',
             showticklabels: !isNoData,
-            gridcolor: isNoData ? plotBackgroundColor : whiteColor
+            gridcolor: isNoData ? plotBackgroundColor : whiteColor,
         },
         hovermode: 'closest',
         plot_bgcolor: plotBackgroundColor,
         paper_bgcolor: plotBackgroundColor,
         legend: {
             font: {
-                color: whiteColor
-            }
+                color: whiteColor,
+            },
         },
         titlefont: {
-            color: whiteColor
+            color: whiteColor,
         },
         xaxisfont: {
-            color: whiteColor
-        }
+            color: whiteColor,
+        },
     };
 }
+
+// Function to generate an array of tick values based on the number of ticks to show
+function getTickValues(ticks, numTicksToShow) {
+    if (ticks.length <= numTicksToShow) {
+        return ticks; // Use all ticks if there are fewer than or equal to numTicksToShow
+    }
+
+    const step = Math.ceil(ticks.length / (numTicksToShow - 1));
+    const tickValues = [];
+    for (let i = 0; i < numTicksToShow - 1; i++) {
+        tickValues.push(ticks[i * step]);
+    }
+    tickValues.push(ticks[ticks.length - 1]); // Add the last data point as the last tick
+    return tickValues;
+}
+
 
 // Main updateGraph function
 function updateGraph() {
     const data = createPokemonData(selectedPokemon, minDataDropdown, maxDataDropdown, sheetDataCache, selectedSheetName);
     const isNoData = data.length === 0 || data.every(trace => trace === {});
     const layout = createGraphLayout(isNoData);
+
 
     updateGraphContainerOnHover(graphContainer, data);
     Plotly.newPlot(graphContainer, data, layout);
