@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function(){
     toggleSearchContainerVisibility();
 });
 
-
+// Error Message functions ----------------------------------------------------------------------
 function isValueEmpty(value){
     if(value === '' || value === null){
         selectTierText.style.color="red"
@@ -73,6 +73,73 @@ function isValueEmpty(value){
 
     return value === '';
   }
+
+function maxMinErrorMessage(message) {
+    let errorMessageContainer = document.getElementById('error-message');
+
+    if (!errorMessageContainer) {
+        // Create the error message container if it doesn't exist
+        errorMessageContainer = document.createElement('div');
+        errorMessageContainer.id = 'error-message';
+        errorMessageContainer.style.fontWeight = "bold";
+        errorMessageContainer.style.color = "red";
+        flexDirectionColumn.appendChild(errorMessageContainer);
+    }
+
+    if (message === '') {
+        // If the message is empty, remove the errorMessageContainer
+        if (errorMessageContainer) {
+            errorMessageContainer.remove();
+        }
+    } else {
+        // Set the error message if it's not empty
+        errorMessageContainer.innerText = message;
+    }
+}
+
+function boxErrorMessage(message) {
+    let boxErrorMessageContainer = document.getElementById('error-message-box');
+
+    if (!boxErrorMessageContainer) {
+        // Create the error message container if it doesn't exist
+        boxErrorMessageContainer = document.createElement('div');
+        boxErrorMessageContainer.id = 'error-message-box';
+
+        // Customize the font size and family
+        boxErrorMessageContainer.style.fontSize = '3rem'; // Set the desired font size
+        boxErrorMessageContainer.style.fontFamily = 'Pixelify Sans, sans-serif'; // Set the pixel-style font family
+
+        // Set other styles
+        boxErrorMessageContainer.style.fontWeight = 'bold';
+        boxErrorMessageContainer.style.color = 'red';
+        boxErrorMessageContainer.style.textAlign = 'center';
+
+        searchSectionContainer.appendChild(boxErrorMessageContainer);
+    }
+
+    if (message === '') {
+        // If the message is empty, remove the boxErrorMessageContainer
+        if (boxErrorMessageContainer) {
+            boxErrorMessageContainer.remove();
+        }
+    } else {
+        // Set the error message if it's not empty
+        boxErrorMessageContainer.innerText = message;
+    }
+}
+
+function checkSelectedPokemonCount() {
+    const errorMessage = "Your box is full!";
+    if (selectedPokemon.length > 29) {
+        boxErrorMessage(errorMessage); // Display error message
+      return false; // Return false to indicate an error
+    } else {
+        boxErrorMessage(''); // Clear any previous error message
+      return true; // Return true to indicate no error
+    }
+  }
+
+// Extract Data functions ----------------------------------------------------------------------
 
 function getAllPokedexDetails() {
     const spaceRef = ref(getStorage(app), 'pokedex.csv');
@@ -105,61 +172,103 @@ function getAllPokedexDetails() {
       });
   }
 
-  function boxErrorMessage(message) {
-    let boxErrorMessageContainer = document.getElementById('error-message-box');
-
-    if (!boxErrorMessageContainer) {
-        // Create the error message container if it doesn't exist
-        boxErrorMessageContainer = document.createElement('div');
-        boxErrorMessageContainer.id = 'error-message-box';
-
-        // Customize the font size and family
-        boxErrorMessageContainer.style.fontSize = '3rem'; // Set the desired font size
-        boxErrorMessageContainer.style.fontFamily = 'Pixelify Sans, sans-serif'; // Set the pixel-style font family
-
-        // Set other styles
-        boxErrorMessageContainer.style.fontWeight = 'bold';
-        boxErrorMessageContainer.style.color = 'red';
-        boxErrorMessageContainer.style.textAlign = 'center';
-
-        searchSectionContainer.appendChild(boxErrorMessageContainer);
+function getTierUsages(tier) {
+    //Escape if the tier is empty (it is by default)
+    if (isValueEmpty(tier)) {
+        return;
     }
 
-    if (message === '') {
-        // If the message is empty, remove the boxErrorMessageContainer
-        if (boxErrorMessageContainer) {
-            boxErrorMessageContainer.remove();
+    // Check if the data for the selected sheet is already in the cache
+    if (sheetDataCache[selectedSheetName]) {
+      // Data for this sheet is already in the cache, update the graph
+      getMinMaxDatesFromCurrentCache();
+      updateGraph();
+      return;
+    }
+  
+    const spaceRef = ref(getStorage(app), `${tier}.csv`);
+    // Data for this sheet is not in the cache, fetch it
+    getDownloadURL(spaceRef)
+      .then((url) => {
+        // Now you have the download URL, you can use it to fetch the file
+        fetch(url)
+          .then((response) => response.text()) // Read the CSV data as text
+          .then((csvData) => {
+            const lines = csvData.split('\n');
+  
+            lines.forEach((line, index) => {
+              if (index === 0) {
+                // Skip the header row
+                return;
+              }
+  
+              const data = line.split(',');
+  
+              if (data.length >= 3) {
+                // Assuming column A corresponds to index 0, column B to index 1, and column C to index 2
+                const pokemonName = data[0].trim();
+                const usageRate = data[1].trim();
+                const snapshot = data[2].trim();
+  
+                // Create a new object for this sheet's data if it doesn't exist
+                if (!sheetDataCache[selectedSheetName]) {
+                  sheetDataCache[selectedSheetName] = {};
+                }
+  
+                if (!sheetDataCache[selectedSheetName][pokemonName]) {
+                  sheetDataCache[selectedSheetName][pokemonName] = {
+                    name: pokemonName,
+                    usage: [],
+                    snapshot: [],
+                  };
+                }
+                sheetDataCache[selectedSheetName][pokemonName].usage.push(usageRate);
+                sheetDataCache[selectedSheetName][pokemonName].snapshot.push(snapshot);
+              }
+            });
+            getMinMaxDatesFromCurrentCache();
+            updateGraph();
+          })
+          .catch((error) => {
+            console.error("Error fetching file:", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error getting download URL:", error);
+      });
+  }  
+
+function getAllSheetNames() {
+    const spaceRef = ref(getStorage(app), 'metadata.csv');
+  
+    getDownloadURL(spaceRef)
+      .then((url) => {
+        return fetch(url);
+      })
+      .then((response) => {
+        return response.text();
+      })
+      .then((csvData) => {
+        const lines = csvData.split('\n');
+        const sheetNames = [];
+  
+        for (let i = 1; i < lines.length; i++) { // Start from the second row (index 1)
+          const data = lines[i].split(',');
+          if (data.length > 0) {
+            const value = data[0].trim(); // Trim spaces and \r characters
+            if (value !== '') {
+              sheetNames.push(value); // Assuming the first column is what you want
+            }
+          }
         }
-    } else {
-        // Set the error message if it's not empty
-        boxErrorMessageContainer.innerText = message;
-    }
-}
+        populateSheetDropdown(sheetNames);
+      })
+      .catch((error) => {
+        console.error('Error reading Metadata CSV file:', error);
+      });
+  }
 
-
-  function maxMinErrorMessage(message) {
-    let errorMessageContainer = document.getElementById('error-message');
-
-    if (!errorMessageContainer) {
-        // Create the error message container if it doesn't exist
-        errorMessageContainer = document.createElement('div');
-        errorMessageContainer.id = 'error-message';
-        errorMessageContainer.style.fontWeight = "bold";
-        errorMessageContainer.style.color = "red";
-        flexDirectionColumn.appendChild(errorMessageContainer);
-    }
-
-    if (message === '') {
-        // If the message is empty, remove the errorMessageContainer
-        if (errorMessageContainer) {
-            errorMessageContainer.remove();
-        }
-    } else {
-        // Set the error message if it's not empty
-        errorMessageContainer.innerText = message;
-    }
-}
-
+//Update Graph Functions
 
 // Function to create data for the selected Pokémon
 function createPokemonData(selectedPokemon, minDataDropdown, maxDataDropdown, sheetDataCache, selectedSheetName) {
@@ -233,7 +342,7 @@ function createGraphLayout(isNoData) {
         graphXAxis = [];
     }
 
-    const numTicksToShow = 12; // Set a reasonable limit for the number of tick values
+    const numTicksToShow = 10; // Set a reasonable limit for the number of tick values
 
     // Use the length of the graphXAxis array to determine the tick placement
     const numTicks = graphXAxis.length;
@@ -259,7 +368,14 @@ function createGraphLayout(isNoData) {
         }
     }
 
-    const tickValues = getTickValues(graphXAxis, numTicksToShow);
+    let tickValues = getTickValues(graphXAxis, numTicksToShow);
+    let tickValuesFormatted = tickValues.map(date => new Date(date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }));
+    
+    //This is so bar chart x-axis labels work properly
+    if (tickValues.length === 1){
+        tickValues = 'none'
+        tickValuesFormatted = 'none'
+    }
 
     return {
         title: `${formatSheetName(selectedSheetName)}`,
@@ -268,7 +384,7 @@ function createGraphLayout(isNoData) {
             showline: true,
             dtick: dtick,
             tickvals: tickValues, // Set explicit tick values
-            ticktext: tickValues.map(date => new Date(date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })), // Format tick labels as "Mon YYYY"
+            ticktext: tickValuesFormatted, // Format tick labels as "Mon YYYY"
             tickfont: {
                 color: whiteColor,
                 size: 10
@@ -326,17 +442,17 @@ function getTickValues(ticks, numTicksToShow) {
     return tickValues;
 }
 
-
 // Main updateGraph function
 function updateGraph() {
     const data = createPokemonData(selectedPokemon, minDataDropdown, maxDataDropdown, sheetDataCache, selectedSheetName);
     const isNoData = data.length === 0 || data.every(trace => trace === {});
     const layout = createGraphLayout(isNoData);
 
-
     updateGraphContainerOnHover(graphContainer, data);
     Plotly.newPlot(graphContainer, data, layout);
 }
+
+// Search Bar Functions
 
 function handleSearchInput() {
 
@@ -362,17 +478,6 @@ function handleSearchInput() {
     });
 }
 
-function checkSelectedPokemonCount() {
-    const errorMessage = "Your box is full!";
-    if (selectedPokemon.length > 29) {
-        boxErrorMessage(errorMessage); // Display error message
-      return false; // Return false to indicate an error
-    } else {
-        boxErrorMessage(''); // Clear any previous error message
-      return true; // Return true to indicate no error
-    }
-  }
-
 function handleSuggestionClick(event) {
     if (event.target.tagName === 'LI') {
         const selectedPokemonName = event.target.textContent;
@@ -392,32 +497,76 @@ function handleSuggestionClick(event) {
     }
 }
 
+//Creation of Pokemon LI ELEMENTS
 function createPokemonListItem(pokemonName, result, allPokedexDetails) {
     const listItem = document.createElement('li');
+    listItem.draggable = true;
+
     const resultPokemonIndex = allPokedexDetails.name.indexOf(result.name);
     const resultPokemonImageXOffset = allPokedexDetails.imageXOffset[resultPokemonIndex];
     const resultPokemonImageYOffset = allPokedexDetails.imageYOffset[resultPokemonIndex];
 
-    // Create the div element with the specified style (inside the li)
     const divElement = createPokemonIcon(resultPokemonImageXOffset, resultPokemonImageYOffset);
 
-    // Create a container for the Pokémon name and remove button
     const contentContainer = createContentContainer(pokemonName);
-
-    // Create a remove button
     const removeButton = createRemoveButton();
 
-    // Add a click event listener to the element
-    listItem.addEventListener('click', () => {
+    // Add a dragstart event listener to the element
+    listItem.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', '');
+        e.dataTransfer.setData('text/html', e.target.innerHTML);
+        e.dataTransfer.effectAllowed = 'move';
+        e.target.classList.add('dragging');
+    });
+
+    // Add a dragend event listener to the element
+    listItem.addEventListener('dragend', (e) => {
+        e.target.classList.remove('dragging');
+    });
+
+    // Add a click event listener to the remove button
+    removeButton.addEventListener('click', () => {
         removePokemon(pokemonName);
     });
 
-    // Append the div element, content container, and remove button to the list item
+    // Add a dragover event listener to the container
+    listItem.addEventListener('dragover', (e) => {
+        e.preventDefault();
+    });
+
+    dropEventListener(listItem);
+
     listItem.appendChild(divElement);
     listItem.appendChild(contentContainer);
     listItem.appendChild(removeButton);
 
     return listItem;
+}
+
+
+
+
+function dropEventListener(listItem){
+    // Add a drop event listener to the container
+    listItem.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const draggedItem = document.querySelector('.dragging');
+        if (draggedItem !== listItem) {
+            // Swap the positions of the dragged item and the drop target
+            const parent = listItem.parentNode;
+            const index1 = Array.from(parent.children).indexOf(listItem);
+            const index2 = Array.from(parent.children).indexOf(draggedItem);
+        if (index1 < index2) {
+            parent.insertBefore(draggedItem, listItem);
+        } else {
+            parent.insertBefore(draggedItem, listItem.nextSibling);
+        }
+
+        // Remove the item at index2 and insert it at index1
+        selectedPokemon.splice(index1, 0, selectedPokemon.splice(index2, 1)[0]);
+        updateGraph()
+        }
+    });
 }
 
 // Function to create a Pokemon icon div element
@@ -476,36 +625,8 @@ function updateSelectedPokemonDisplay() {
     updateGraph();
 }
 
-function getAllSheetNames() {
-  const spaceRef = ref(getStorage(app), 'metadata.csv');
 
-  getDownloadURL(spaceRef)
-    .then((url) => {
-      return fetch(url);
-    })
-    .then((response) => {
-      return response.text();
-    })
-    .then((csvData) => {
-      const lines = csvData.split('\n');
-      const sheetNames = [];
-
-      for (let i = 1; i < lines.length; i++) { // Start from the second row (index 1)
-        const data = lines[i].split(',');
-        if (data.length > 0) {
-          const value = data[0].trim(); // Trim spaces and \r characters
-          if (value !== '') {
-            sheetNames.push(value); // Assuming the first column is what you want
-          }
-        }
-      }
-      populateSheetDropdown(sheetNames);
-    })
-    .catch((error) => {
-      console.error('Error reading Metadata CSV file:', error);
-    });
-}
-
+//OTHERS
 
 // Function to format the sheet name
 function formatSheetName(sheetName) {
@@ -609,71 +730,7 @@ function removeEmptyStringOptions() {
   emptyStringOptions.forEach(option => option.remove());
 }
 
-function getTierUsages(tier) {
-    //Escape if the tier is empty (it is by default)
-    if (isValueEmpty(tier)) {
-        return;
-    }
 
-    // Check if the data for the selected sheet is already in the cache
-    if (sheetDataCache[selectedSheetName]) {
-      // Data for this sheet is already in the cache, update the graph
-      getMinMaxDatesFromCurrentCache();
-      updateGraph();
-      return;
-    }
-  
-    const spaceRef = ref(getStorage(app), `${tier}.csv`);
-    // Data for this sheet is not in the cache, fetch it
-    getDownloadURL(spaceRef)
-      .then((url) => {
-        // Now you have the download URL, you can use it to fetch the file
-        fetch(url)
-          .then((response) => response.text()) // Read the CSV data as text
-          .then((csvData) => {
-            const lines = csvData.split('\n');
-  
-            lines.forEach((line, index) => {
-              if (index === 0) {
-                // Skip the header row
-                return;
-              }
-  
-              const data = line.split(',');
-  
-              if (data.length >= 3) {
-                // Assuming column A corresponds to index 0, column B to index 1, and column C to index 2
-                const pokemonName = data[0].trim();
-                const usageRate = data[1].trim();
-                const snapshot = data[2].trim();
-  
-                // Create a new object for this sheet's data if it doesn't exist
-                if (!sheetDataCache[selectedSheetName]) {
-                  sheetDataCache[selectedSheetName] = {};
-                }
-  
-                if (!sheetDataCache[selectedSheetName][pokemonName]) {
-                  sheetDataCache[selectedSheetName][pokemonName] = {
-                    name: pokemonName,
-                    usage: [],
-                    snapshot: [],
-                  };
-                }
-                sheetDataCache[selectedSheetName][pokemonName].usage.push(usageRate);
-                sheetDataCache[selectedSheetName][pokemonName].snapshot.push(snapshot);
-              }
-            });
-            getMinMaxDatesFromCurrentCache();
-            updateGraph();
-          })
-          .catch((error) => {
-            console.error("Error fetching file:", error);
-          });
-      })
-      .catch((error) => {
-        console.error("Error getting download URL:", error);
-      });
-  }  
   
 function getSelectedSheetData() {
 
