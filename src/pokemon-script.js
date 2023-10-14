@@ -525,7 +525,7 @@ function createPokemonListItem(pokemonName, result, allPokedexDetails) {
     });
 
     // Add a click event listener to the remove button
-    removeButton.addEventListener('click', () => {
+    listItem.addEventListener('click', () => {
         removePokemon(pokemonName);
     });
 
