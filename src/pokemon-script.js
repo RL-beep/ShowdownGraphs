@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function(){
     toggleSearchContainerVisibility();
 });
 
+
 function isValueEmpty(value){
     if(value === '' || value === null){
         selectTierText.style.color="red"
@@ -87,7 +88,7 @@ function getAllPokedexDetails() {
         for (let i = 1; i < lines.length; i++) { // Start from the second row (index 1)
           const data = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/); // Split using comma with lookahead for quoted values
   
-          // Assuming column A corresponds to index 0, column D to index 3, and column E to index 4
+          //Column A corresponds to index 0, column D to index 3, and column E to index 4
           const pokemonName = data[0] ? data[0].trim() : '';
           const pokemonImageOffsetX = data[3] ? parseFloat(data[3].trim()) : 0; // Convert to number or default to 0
           const pokemonImageOffsetY = data[4] ? parseFloat(data[4].trim()) : 0; // Convert to number or default to 0
@@ -136,7 +137,7 @@ function getAllPokedexDetails() {
 }
 
 
-  function graphErrorMessage(message) {
+  function maxMinErrorMessage(message) {
     let errorMessageContainer = document.getElementById('error-message');
 
     if (!errorMessageContainer) {
@@ -175,13 +176,13 @@ function createPokemonData(selectedPokemon, minDataDropdown, maxDataDropdown, sh
 // Function to create a single Pokémon trace based on data
 function createPokemonTrace(pokemonName, graphXAxis, usageData) {
     if (Array.isArray(graphXAxis) && graphXAxis.length === 1) {
-        graphErrorMessage('');
+        maxMinErrorMessage('');
         return createBarChartTrace(pokemonName, usageData);
     } else if (Array.isArray(graphXAxis) && graphXAxis.length > 1) {
-        graphErrorMessage('');
+        maxMinErrorMessage('');
         return createScatterPlotTrace(pokemonName, graphXAxis, usageData);
     } else {
-        graphErrorMessage('Please enter a valid date range...');
+        maxMinErrorMessage('Please enter a valid date range...');
         return {};
     }
 }
@@ -193,6 +194,7 @@ function createBarChartTrace(pokemonName, usageData) {
         y: usageData,
         type: 'bar',
         name: pokemonName,
+        hovertemplate: `Pokémon: ${pokemonName} <br>Usage: %{y}%<extra></extra> `
     };
 }
 
@@ -204,7 +206,7 @@ function createScatterPlotTrace(pokemonName, graphXAxis, usageData) {
         type: 'scatter',
         mode: 'lines+markers',
         name: pokemonName,
-        hovertemplate: `Pokémon: ${pokemonName} <br>Usage: %{y}% <br> Snapshot: %{x|%b %Y} <extra></extra> `,
+        hovertemplate: `Pokémon: ${pokemonName} <br>Usage: %{y}% <br> Snapshot: %{x|%b %Y} <extra></extra> `
     };
 }
 
