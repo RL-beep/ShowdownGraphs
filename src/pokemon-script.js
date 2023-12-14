@@ -46,7 +46,7 @@ let uniqueSnapshots = []; // Array to store unique snapshot values
 let firstSelectionChanged = false; //flag to check if the default empty selection has changed
 
 //Set default value for the pokemon box background
-let selectedBoxBackground = "https://archives.bulbagarden.net/media/upload/4/4c/Box_Pokemon_Center_BDSP.png"
+let selectedBoxBackground = "https://firebasestorage.googleapis.com/v0/b/smogon-stats.appspot.com/o/Box_Pokemon_Center_BDSP.png?alt=media&token=3776993a-2104-4546-bb90-4e5afc635326"
 const boxSVGWidth = 640;
 const boxSVGHeight = 580;
 let boxSVG;
