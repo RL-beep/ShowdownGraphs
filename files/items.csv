@@ -1,0 +1,537 @@
+name,spritenum,desc,gen,flingBasePower,naturalGiftBasePower,naturalGiftType,itemImageXOffset,itemImageYOffset
+Ability Shield,746,Holder's Ability cannot be changed by any effect.,9,30,0,0,-240,-1104
+Abomasite,575,"If held by an Abomasnow, this item allows it to Mega Evolve in battle.",6,0,0,0,-360,-840
+Absolite,576,"If held by an Absol, this item allows it to Mega Evolve in battle.",6,0,0,0,0,-864
+Absorb Bulb,2,Raises holder's Sp. Atk by 1 stage if hit by a Water-type attack. Single use.,5,30,0,0,-48,0
+Adamant Crystal,741,"If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.",8,0,0,0,-120,-1104
+Adamant Orb,4,"If held by a Dialga, its Steel- and Dragon-type attacks have 1.2x power.",4,60,0,0,-96,0
+Adrenaline Orb,660,Raises holder's Speed by 1 stage if it gets affected by Intimidate. Single use.,7,30,0,0,-96,-984
+Aerodactylite,577,"If held by an Aerodactyl, this item allows it to Mega Evolve in battle.",6,0,0,0,-24,-864
+Aggronite,578,"If held by an Aggron, this item allows it to Mega Evolve in battle.",6,0,0,0,-48,-864
+Aguav Berry,5,Restores 1/3 max HP at 1/4 max HP or less; confuses if -SpD Nature. Single use.,3,0,80,Dragon,-120,0
+Air Balloon,6,Holder is immune to Ground-type attacks. Pops when holder is hit.,5,10,0,0,-144,0
+Alakazite,579,"If held by an Alakazam, this item allows it to Mega Evolve in battle.",6,0,0,0,-72,-864
+Aloraichium Z,655,"If held by an Alolan Raichu with Thunderbolt, it can use Stoked Sparksurfer.",7,0,0,0,-360,-960
+Altarianite,615,"If held by an Altaria, this item allows it to Mega Evolve in battle.",6,0,0,0,-168,-912
+Ampharosite,580,"If held by an Ampharos, this item allows it to Mega Evolve in battle.",6,0,0,0,-96,-864
+Apicot Berry,10,Raises holder's Sp. Def by 1 stage when at 1/4 max HP or less. Single use.,3,0,100,Ground,-240,0
+Armor Fossil,12,Can be revived into Shieldon.,4,100,0,0,-288,0
+Aspear Berry,13,Holder is cured if it is frozen. Single use.,3,0,80,Ice,-312,0
+Assault Vest,581,"Holder's Sp. Def is 1.5x, but it can only select damaging moves.",6,80,0,0,-120,-864
+Audinite,617,"If held by an Audino, this item allows it to Mega Evolve in battle.",6,0,0,0,-216,-912
+Auspicious Armor,753,Evolves Charcadet into Armarouge when used.,9,30,0,0,-24,-1128
+Babiri Berry,17,Halves damage taken from a supereffective Steel-type attack. Single use.,4,0,80,Steel,-24,-24
+Banettite,582,"If held by a Banette, this item allows it to Mega Evolve in battle.",6,0,0,0,-144,-864
+Beast Ball,661,A special Poke Ball designed to catch Ultra Beasts.,7,0,0,0,-120,-984
+Beedrillite,628,"If held by a Beedrill, this item allows it to Mega Evolve in battle.",6,0,0,0,-96,-936
+Belue Berry,21,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,100,Electric,-120,-24
+Berry Juice,22,Restores 20 HP when at 1/2 max HP or less. Single use.,2,30,0,0,-144,-24
+Berry Sweet,706,Evolves Milcery into Alcremie when held and spun around.,8,10,0,0,-48,-1056
+Big Nugget,27,A big nugget of pure gold that gives off a lustrous gleam.,5,130,0,0,-264,-24
+Big Root,29,Holder gains 1.3x HP from draining/Aqua Ring/Ingrain/Leech Seed/Strength Sap.,4,10,0,0,-312,-24
+Binding Band,31,Holder's partial-trapping moves deal 1/6 max HP per turn instead of 1/8.,5,30,0,0,-360,-24
+Black Belt,32,Holder's Fighting-type attacks have 1.2x power.,2,30,0,0,0,-48
+Black Glasses,35,Holder's Dark-type attacks have 1.2x power.,2,30,0,0,-72,-48
+Black Sludge,34,"Each turn, if holder is a Poison type, restores 1/16 max HP; loses 1/8 if not.",4,30,0,0,-48,-48
+Blastoisinite,583,"If held by a Blastoise, this item allows it to Mega Evolve in battle.",6,0,0,0,-168,-864
+Blazikenite,584,"If held by a Blaziken, this item allows it to Mega Evolve in battle.",6,0,0,0,-192,-864
+Blue Orb,41,"If held by a Kyogre, this item triggers its Primal Reversion in battle.",6,0,0,0,-216,-48
+Bluk Berry,44,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Fire,-288,-48
+Blunder Policy,716,"If the holder misses due to accuracy, its Speed is raised by 2 stages. Single use.",8,80,0,0,-288,-1056
+Booster Energy,745,Activates the Protosynthesis or Quark Drive Abilities. Single use.,9,30,0,0,-216,-1104
+Bottle Cap,696,Used for Hyper Training. One of a Pokemon's stats is calculated with an IV of 31.,7,30,0,0,-192,-1032
+Bright Powder,51,The accuracy of attacks against the holder is 0.9x.,2,10,0,0,-72,-72
+Bug Gem,53,Holder's first successful Bug-type attack will have 1.3x power. Single use.,5,0,0,0,-120,-72
+Bug Memory,673,Holder's Multi-Attack is Bug type.,7,0,0,0,-24,-1008
+Buginium Z,642,"If holder has a Bug move, this item allows it to use a Bug Z-Move.",7,0,0,0,-48,-960
+Burn Drive,54,Holder's Techno Blast is Fire type.,5,0,0,0,-144,-72
+Cameruptite,625,"If held by a Camerupt, this item allows it to Mega Evolve in battle.",6,0,0,0,-24,-936
+Cell Battery,60,Raises holder's Attack by 1 if hit by an Electric-type attack. Single use.,5,30,0,0,-288,-72
+Charcoal,61,Holder's Fire-type attacks have 1.2x power.,2,30,0,0,-312,-72
+Charizardite X,585,"If held by a Charizard, this item allows it to Mega Evolve in battle.",6,0,0,0,-216,-864
+Charizardite Y,586,"If held by a Charizard, this item allows it to Mega Evolve in battle.",6,0,0,0,-240,-864
+Charti Berry,62,Halves damage taken from a supereffective Rock-type attack. Single use.,4,0,80,Rock,-336,-72
+Cheri Berry,63,Holder cures itself if it is paralyzed. Single use.,3,0,80,Fire,-360,-72
+Cherish Ball,64,A rare Poke Ball that has been crafted to commemorate an occasion.,4,0,0,0,0,-96
+Chesto Berry,65,Holder wakes up if it is asleep. Single use.,3,0,80,Water,-24,-96
+Chilan Berry,66,Halves damage taken from a Normal-type attack. Single use.,4,0,80,Normal,-48,-96
+Chill Drive,67,Holder's Techno Blast is Ice type.,5,0,0,0,-72,-96
+Chipped Pot,720,Evolves Sinistea-Antique into Polteageist-Antique when used.,8,80,0,0,0,-1080
+Choice Band,68,"Holder's Attack is 1.5x, but it can only select the first move it executes.",3,10,0,0,-96,-96
+Choice Scarf,69,"Holder's Speed is 1.5x, but it can only select the first move it executes.",4,10,0,0,-120,-96
+Choice Specs,70,"Holder's Sp. Atk is 1.5x, but it can only select the first move it executes.",4,10,0,0,-144,-96
+Chople Berry,71,Halves damage taken from a supereffective Fighting-type attack. Single use.,4,0,80,Fighting,-168,-96
+Claw Fossil,72,Can be revived into Anorith.,3,100,0,0,-192,-96
+Clear Amulet,747,Prevents other Pokemon from lowering the holder's stat stages.,9,30,0,0,-264,-1104
+Clover Sweet,707,Evolves Milcery into Alcremie when held and spun around.,8,10,0,0,-72,-1056
+Coba Berry,76,Halves damage taken from a supereffective Flying-type attack. Single use.,4,0,80,Flying,-288,-96
+Colbur Berry,78,Halves damage taken from a supereffective Dark-type attack. Single use.,4,0,80,Dark,-336,-96
+Cornerstone Mask,758,Ogerpon-Cornerstone: 1.2x power attacks; Terastallize to gain Embody Aspect.,9,60,0,0,-144,-1128
+Cornn Berry,81,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Bug,-24,-120
+Cover Fossil,85,Can be revived into Tirtouga.,5,100,0,0,-120,-120
+Covert Cloak,750,Holder is not affected by the secondary effect of another Pokemon's attack.,9,30,0,0,-336,-1104
+Cracked Pot,719,Evolves Sinistea into Polteageist when used.,8,80,0,0,-360,-1056
+Custap Berry,86,Holder moves first in its priority bracket when at 1/4 max HP or less. Single use.,4,0,100,Ghost,-144,-120
+Damp Rock,88,Holder's use of Rain Dance lasts 8 turns instead of 5.,4,60,0,0,-192,-120
+Dark Gem,89,Holder's first successful Dark-type attack will have 1.3x power. Single use.,5,0,0,0,-216,-120
+Dark Memory,683,Holder's Multi-Attack is Dark type.,7,0,0,0,-264,-1008
+Darkinium Z,646,"If holder has a Dark move, this item allows it to use a Dark Z-Move.",7,0,0,0,-144,-960
+Dawn Stone,92,Evolves male Kirlia into Gallade and female Snorunt into Froslass when used.,4,80,0,0,-288,-120
+Decidium Z,650,"If held by a Decidueye with Spirit Shackle, it can use Sinister Arrow Raid.",7,0,0,0,-240,-960
+Deep Sea Scale,93,"If held by a Clamperl, its Sp. Def is doubled. Evolves Clamperl into Gorebyss when traded.",3,30,0,0,-312,-120
+Deep Sea Tooth,94,"If held by a Clamperl, its Sp. Atk is doubled. Evolves Clamperl into Huntail when traded.",3,90,0,0,-336,-120
+Destiny Knot,95,"If holder becomes infatuated, the other Pokemon also becomes infatuated.",4,10,0,0,-360,-120
+Diancite,624,"If held by a Diancie, this item allows it to Mega Evolve in battle.",6,0,0,0,0,-936
+Dive Ball,101,A Poke Ball that works especially well on Pokemon that live underwater.,3,0,0,0,-120,-144
+Dome Fossil,102,Can be revived into Kabuto.,3,100,0,0,-144,-144
+Douse Drive,103,Holder's Techno Blast is Water type.,5,0,0,0,-168,-144
+Draco Plate,105,Holder's Dragon-type attacks have 1.2x power. Judgment is Dragon type.,4,0,0,0,-216,-144
+Dragon Fang,106,Holder's Dragon-type attacks have 1.2x power.,2,70,0,0,-240,-144
+Dragon Gem,107,Holder's first successful Dragon-type attack will have 1.3x power. Single use.,5,0,0,0,-264,-144
+Dragon Memory,682,Holder's Multi-Attack is Dragon type.,7,0,0,0,-240,-1008
+Dragon Scale,108,Evolves Seadra into Kingdra when traded.,2,30,0,0,-288,-144
+Dragonium Z,645,"If holder has a Dragon move, this item allows it to use a Dragon Z-Move.",7,0,0,0,-120,-960
+Dread Plate,110,Holder's Dark-type attacks have 1.2x power. Judgment is Dark type.,4,0,0,0,-336,-144
+Dream Ball,111,A Poke Ball that makes it easier to catch wild Pokémon while they're asleep.,5,0,0,0,-360,-144
+Dubious Disc,113,Evolves Porygon2 into Porygon-Z when traded.,4,50,0,0,-24,-168
+Durin Berry,114,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,100,Water,-48,-168
+Dusk Ball,115,A Poke Ball that makes it easier to catch wild Pokemon at night or in caves.,4,0,0,0,-72,-168
+Dusk Stone,116,"Evolves Murkrow into Honchkrow, Misdreavus into Mismagius, Lampent into Chandelure, and Doublade into Aegislash when used.",4,80,0,0,-96,-168
+Earth Plate,117,Holder's Ground-type attacks have 1.2x power. Judgment is Ground type.,4,0,0,0,-120,-168
+Eevium Z,657,"If held by an Eevee with Last Resort, it can use Extreme Evoboost.",7,0,0,0,-24,-984
+Eject Button,118,"If holder survives a hit, it immediately switches out to a chosen ally. Single use.",5,30,0,0,-144,-168
+Eject Pack,714,"If the holder's stat stages are lowered, it switches to a chosen ally. Single use.",8,50,0,0,-240,-1056
+Electirizer,119,Evolves Electabuzz into Electivire when traded.,4,80,0,0,-168,-168
+Electric Gem,120,Holder's first successful Electric-type attack will have 1.3x power. Single use.,5,0,0,0,-192,-168
+Electric Memory,679,Holder's Multi-Attack is Electric type.,7,0,0,0,-168,-1008
+Electric Seed,664,"If the terrain is Electric Terrain, raises holder's Defense by 1 stage. Single use.",7,10,0,0,-192,-984
+Electrium Z,634,"If holder has an Electric move, this item allows it to use an Electric Z-Move.",7,0,0,0,-240,-936
+Enigma Berry,124,Restores 1/4 max HP after holder is hit by a supereffective move. Single use.,3,0,100,Bug,-288,-168
+Eviolite,130,"If holder's species can evolve, its Defense and Sp. Def are 1.5x.",5,40,0,0,-48,-192
+Expert Belt,132,Holder's attacks that are super effective against the target do 1.2x damage.,4,10,0,0,-96,-192
+Fairium Z,648,"If holder has a Fairy move, this item allows it to use a Fairy Z-Move.",7,0,0,0,-192,-960
+Fairy Feather,754,Holder's Fairy-type attacks have 1.2x power.,9,10,0,0,-48,-1128
+Fairy Gem,611,Holder's first successful Fairy-type attack will have 1.3x power. Single use.,6,0,0,0,-72,-912
+Fairy Memory,684,Holder's Multi-Attack is Fairy type.,7,0,0,0,-288,-1008
+Fast Ball,137,A Poke Ball that makes it easier to catch Pokemon which are quick to run away.,2,0,0,0,-216,-192
+Fighting Gem,139,Holder's first successful Fighting-type attack will have 1.3x power. Single use.,5,0,0,0,-264,-192
+Fighting Memory,668,Holder's Multi-Attack is Fighting type.,7,0,0,0,-288,-984
+Fightinium Z,637,"If holder has a Fighting move, this item allows it to use a Fighting Z-Move.",7,0,0,0,-312,-936
+Figy Berry,140,Restores 1/3 max HP at 1/4 max HP or less; confuses if -Atk Nature. Single use.,3,0,80,Bug,-288,-192
+Fire Gem,141,Holder's first successful Fire-type attack will have 1.3x power. Single use.,5,0,0,0,-312,-192
+Fire Memory,676,Holder's Multi-Attack is Fire type.,7,0,0,0,-96,-1008
+Fire Stone,142,"Evolves Vulpix into Ninetales, Growlithe into Arcanine, Eevee into Flareon, and Pansear into Simisear when used.",1,30,0,0,-336,-192
+Firium Z,632,"If holder has a Fire move, this item allows it to use a Fire Z-Move.",7,0,0,0,-192,-936
+Fist Plate,143,Holder's Fighting-type attacks have 1.2x power. Judgment is Fighting type.,4,0,0,0,-360,-192
+Flame Orb,145,"At the end of every turn, this item attempts to burn the holder.",4,30,0,0,-24,-216
+Flame Plate,146,Holder's Fire-type attacks have 1.2x power. Judgment is Fire type.,4,0,0,0,-48,-216
+Float Stone,147,Holder's weight is halved.,5,30,0,0,-72,-216
+Flower Sweet,708,Evolves Milcery into Alcremie when held and spun around.,8,0,0,0,-96,-1056
+Flying Gem,149,Holder's first successful Flying-type attack will have 1.3x power. Single use.,5,0,0,0,-120,-216
+Flying Memory,669,Holder's Multi-Attack is Flying type.,7,0,0,0,-312,-984
+Flyinium Z,640,"If holder has a Flying move, this item allows it to use a Flying Z-Move.",7,0,0,0,0,-960
+Focus Band,150,Holder has a 10% chance to survive an attack that would KO it with 1 HP.,2,10,0,0,-144,-216
+Focus Sash,151,"If holder's HP is full, will survive an attack that would KO it with 1 HP. Single use.",4,10,0,0,-168,-216
+Fossilized Bird,700,Can revive into Dracozolt with Fossilized Drake or Arctozolt with Fossilized Dino.,8,100,0,0,-288,-1032
+Fossilized Dino,703,Can revive into Arctovish with Fossilized Fish or Arctozolt with Fossilized Bird.,8,100,0,0,-360,-1032
+Fossilized Drake,702,Can revive into Dracozolt with Fossilized Bird or Dracovish with Fossilized Fish.,8,100,0,0,-336,-1032
+Fossilized Fish,701,Can revive into Dracovish with Fossilized Drake or Arctovish with Fossilized Dino.,8,100,0,0,-312,-1032
+Friend Ball,153,A Poke Ball that makes caught Pokemon more friendly.,2,0,0,0,-216,-216
+Full Incense,155,Holder moves last in its priority bracket.,4,10,0,0,-264,-216
+Galarica Cuff,739,Evolves Galarian Slowpoke into Galarian Slowbro when used.,8,30,0,0,-72,-1104
+Galarica Wreath,740,Evolves Galarian Slowpoke into Galarian Slowking when used.,8,30,0,0,-96,-1104
+Galladite,616,"If held by a Gallade, this item allows it to Mega Evolve in battle.",6,0,0,0,-192,-912
+Ganlon Berry,158,Raises holder's Defense by 1 stage when at 1/4 max HP or less. Single use.,3,0,100,Ice,-336,-216
+Garchompite,589,"If held by a Garchomp, this item allows it to Mega Evolve in battle.",6,0,0,0,-312,-864
+Gardevoirite,587,"If held by a Gardevoir, this item allows it to Mega Evolve in battle.",6,0,0,0,-264,-864
+Gengarite,588,"If held by a Gengar, this item allows it to Mega Evolve in battle.",6,0,0,0,-288,-864
+Ghost Gem,161,Holder's first successful Ghost-type attack will have 1.3x power. Single use.,5,0,0,0,-24,-240
+Ghost Memory,674,Holder's Multi-Attack is Ghost type.,7,0,0,0,-48,-1008
+Ghostium Z,644,"If holder has a Ghost move, this item allows it to use a Ghost Z-Move.",7,0,0,0,-96,-960
+Glalitite,623,"If held by a Glalie, this item allows it to Mega Evolve in battle.",6,0,0,0,-360,-912
+Gold Bottle Cap,697,Used for Hyper Training. All of a Pokemon's stats are calculated with an IV of 31.,7,30,0,0,-216,-1032
+Grass Gem,172,Holder's first successful Grass-type attack will have 1.3x power. Single use.,5,0,0,0,-288,-240
+Grass Memory,678,Holder's Multi-Attack is Grass type.,7,0,0,0,-144,-1008
+Grassium Z,635,"If holder has a Grass move, this item allows it to use a Grass Z-Move.",7,0,0,0,-264,-936
+Grassy Seed,667,"If the terrain is Grassy Terrain, raises holder's Defense by 1 stage. Single use.",7,10,0,0,-264,-984
+Great Ball,174,A high-performance Ball that provides a higher catch rate than a Poke Ball.,1,0,0,0,-336,-240
+Grepa Berry,178,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Flying,-48,-264
+Grip Claw,179,Holder's partial-trapping moves always last 7 turns.,4,90,0,0,-72,-264
+Griseous Core,743,"If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.",8,0,0,0,-168,-1104
+Griseous Orb,180,"If held by a Giratina, its Ghost- and Dragon-type attacks have 1.2x power.",4,60,0,0,-96,-264
+Ground Gem,182,Holder's first successful Ground-type attack will have 1.3x power. Single use.,5,0,0,0,-144,-264
+Ground Memory,671,Holder's Multi-Attack is Ground type.,7,0,0,0,-360,-984
+Groundium Z,639,"If holder has a Ground move, this item allows it to use a Ground Z-Move.",7,0,0,0,-360,-936
+Gyaradosite,589,"If held by a Gyarados, this item allows it to Mega Evolve in battle.",6,0,0,0,-312,-864
+Haban Berry,185,Halves damage taken from a supereffective Dragon-type attack. Single use.,4,0,80,Dragon,-216,-264
+Hard Stone,187,Holder's Rock-type attacks have 1.2x power.,2,100,0,0,-264,-264
+Heal Ball,188,A remedial Poke Ball that restores the caught Pokemon's HP and status problem.,4,0,0,0,-288,-264
+Hearthflame Mask,760,Ogerpon-Hearthflame: 1.2x power attacks; Terastallize to gain Embody Aspect.,9,60,0,0,-192,-1128
+Heat Rock,193,Holder's use of Sunny Day lasts 8 turns instead of 5.,4,60,0,0,-24,-288
+Heavy Ball,194,A Poke Ball for catching very heavy Pokemon.,2,0,0,0,-48,-288
+Heavy-Duty Boots,715,"When switching in, the holder is unaffected by hazards on its side of the field.",8,80,0,0,-264,-1056
+Helix Fossil,195,Can be revived into Omanyte.,3,100,0,0,-72,-288
+Heracronite,590,"If held by a Heracross, this item allows it to Mega Evolve in battle.",6,0,0,0,-336,-864
+Hondew Berry,213,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Ground,-120,-312
+Houndoominite,591,"If held by a Houndoom, this item allows it to Mega Evolve in battle.",6,0,0,0,-360,-864
+Iapapa Berry,217,Restores 1/3 max HP at 1/4 max HP or less; confuses if -Def Nature. Single use.,3,0,80,Dark,-216,-312
+Ice Gem,218,Holder's first successful Ice-type attack will have 1.3x power. Single use.,5,0,0,0,-240,-312
+Ice Memory,681,Holder's Multi-Attack is Ice type.,7,0,0,0,-216,-1008
+Ice Stone,693,"Evolves Alolan Sandshrew into Alolan Sandslash, Alolan Vulpix into Alolan Ninetales, Eevee into Glaceon, and Galarian Darumaka into Galarian Darmanitan when used.",7,30,0,0,-120,-1032
+Icicle Plate,220,Holder's Ice-type attacks have 1.2x power. Judgment is Ice type.,4,0,0,0,-288,-312
+Icium Z,636,"If holder has an Ice move, this item allows it to use an Ice Z-Move.",7,0,0,0,-288,-936
+Icy Rock,221,Holder's use of Hail lasts 8 turns instead of 5.,4,40,0,0,-312,-312
+Incinium Z,651,"If held by an Incineroar with Darkest Lariat, it can use Malicious Moonsault.",7,0,0,0,-264,-960
+Insect Plate,223,Holder's Bug-type attacks have 1.2x power. Judgment is Bug type.,4,0,0,0,-360,-312
+Iron Ball,224,"Holder is grounded, Speed halved. If Flying type, takes neutral Ground damage.",4,130,0,0,0,-336
+Iron Plate,225,Holder's Steel-type attacks have 1.2x power. Judgment is Steel type.,4,0,0,0,-24,-336
+Jaboca Berry,230,"If holder is hit by a physical move, attacker loses 1/8 of its max HP. Single use.",4,0,100,Dragon,-144,-336
+Jaw Fossil,694,Can be revived into Tyrunt.,6,100,0,0,-144,-1032
+Kasib Berry,233,Halves damage taken from a supereffective Ghost-type attack. Single use.,4,0,80,Ghost,-216,-336
+Kebia Berry,234,Halves damage taken from a supereffective Poison-type attack. Single use.,4,0,80,Poison,-240,-336
+Kee Berry,593,Raises holder's Defense by 1 stage after it is hit by a physical attack. Single use.,6,0,100,Fairy,-24,-888
+Kelpsy Berry,235,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Fighting,-264,-336
+Kangaskhanite,592,"If held by a Kangaskhan, this item allows it to Mega Evolve in battle.",6,0,0,0,0,-888
+King's Rock,236,Holder's attacks without a chance to make the target flinch gain a 10% chance to make the target flinch. Evolves Poliwhirl into Politoed and Slowpoke into Slowking when traded.,2,30,0,0,-288,-336
+Kommonium Z,690,"If held by a Kommo-o with Clanging Scales, it can use Clangorous Soulblaze.",7,0,0,0,-48,-1032
+Lagging Tail,237,Holder moves last in its priority bracket.,4,10,0,0,-312,-336
+Lansat Berry,238,Holder gains the Focus Energy effect when at 1/4 max HP or less. Single use.,3,0,100,Flying,-336,-336
+Latiasite,629,"If held by a Latias, this item allows it to Mega Evolve in battle.",6,0,0,0,-120,-936
+Latiosite,630,"If held by a Latios, this item allows it to Mega Evolve in battle.",6,0,0,0,-144,-936
+Lax Incense,240,The accuracy of attacks against the holder is 0.9x.,3,10,0,0,0,-360
+Leaf Stone,241,"Evolves Gloom into Vileplume, Weepinbell into Victreebel, Exeggcute into Exeggutor or Alolan Exeggutor, Eevee into Leafeon, Nuzleaf into Shiftry, and Pansage into Simisage when used.",1,30,0,0,-24,-360
+Leek,475,"If held by a Farfetch’d or Sirfetch’d, its critical hit ratio is raised by 2 stages.",8,60,0,0,-264,-696
+Leftovers,242,"At the end of every turn, holder restores 1/16 of its max HP.",2,10,0,0,-48,-360
+Leppa Berry,244,Restores 10 PP to the first of the holder's moves to reach 0 PP. Single use.,3,0,80,Fighting,-96,-360
+Level Ball,246,A Poke Ball for catching Pokemon that are a lower level than your own.,2,0,0,0,-144,-360
+Liechi Berry,248,Raises holder's Attack by 1 stage when at 1/4 max HP or less. Single use.,3,0,100,Grass,-192,-360
+Life Orb,249,"Holder's attacks do 1.3x damage, and it loses 1/10 its max HP after the attack.",4,30,0,0,-216,-360
+Light Ball,251,"If held by a Pikachu, its Attack and Sp. Atk are doubled.",2,30,0,0,-264,-360
+Light Clay,252,"Holder's use of Aurora Veil, Light Screen, or Reflect lasts 8 turns instead of 5.",4,30,0,0,-288,-360
+Loaded Dice,751,Holder's moves that hit 2-5 times hit 4-5 times; Population Bomb hits 4-10 times.,9,30,0,0,-360,-1104
+Lopunnite,626,"If held by a Lopunny, this item allows it to Mega Evolve in battle.",6,0,0,0,-48,-936
+Love Ball,258,Poke Ball for catching Pokemon that are the opposite gender of your Pokemon.,2,0,0,0,-48,-384
+Love Sweet,705,Evolves Milcery into Alcremie when held and spun around.,8,10,0,0,-24,-1056
+Lucarionite,594,"If held by a Lucario, this item allows it to Mega Evolve in battle.",6,0,0,0,-48,-888
+Lucky Punch,261,"If held by a Chansey, its critical hit ratio is raised by 2 stages.",2,40,0,0,-120,-384
+Lum Berry,262,Holder cures itself if it has a non-volatile status or is confused. Single use.,3,0,80,Flying,-144,-384
+Luminous Moss,595,Raises holder's Sp. Def by 1 stage if hit by a Water-type attack. Single use.,6,30,0,0,-72,-888
+Lunalium Z,686,Lunala or Dawn Wings Necrozma with Moongeist Beam can use a special Z-Move.,7,0,0,0,-336,-1008
+Lure Ball,264,A Poke Ball for catching Pokemon hooked by a Rod when fishing.,2,0,0,0,-192,-384
+Lustrous Globe,742,"If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.",8,0,0,0,-144,-1104
+Lustrous Orb,265,"If held by a Palkia, its Water- and Dragon-type attacks have 1.2x power.",4,60,0,0,-216,-384
+Luxury Ball,266,A comfortable Poke Ball that makes a caught wild Pokemon quickly grow friendly.,3,0,0,0,-240,-384
+Lycanium Z,689,"If held by a Lycanroc forme with Stone Edge, it can use Splintered Stormshards.",7,0,0,0,-24,-1032
+Macho Brace,269,Holder's Speed is halved. The Klutz Ability does not ignore this effect.,3,60,0,0,-312,-384
+Magmarizer,272,Evolves Magmar into Magmortar when traded.,4,80,0,0,0,-408
+Magnet,273,Holder's Electric-type attacks have 1.2x power.,2,30,0,0,-24,-408
+Mago Berry,274,Restores 1/3 max HP at 1/4 max HP or less; confuses if -Spe Nature. Single use.,3,0,80,Ghost,-48,-408
+Magost Berry,275,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Rock,-72,-408
+Mail,403,"Cannot be given to or taken from a Pokemon, except by Covet/Knock Off/Thief.",2,0,0,0,-72,-600
+Malicious Armor,744,Evolves Charcadet into Ceruledge when used.,9,30,0,0,-192,-1104
+Manectite,596,"If held by a Manectric, this item allows it to Mega Evolve in battle.",6,0,0,0,-96,-888
+Maranga Berry,597,Raises holder's Sp. Def by 1 stage after it is hit by a special attack. Single use.,6,0,100,Dark,-120,-888
+Marshadium Z,654,"If held by Marshadow with Spectral Thief, it can use Soul-Stealing 7-Star Strike.",7,0,0,0,-336,-960
+Master Ball,276,The best Ball with the ultimate performance. It will catch any wild Pokemon.,1,0,0,0,-96,-408
+Masterpiece Teacup,757,Evolves Poltchageist-Artisan into Sinistcha-Masterpiece when used.,9,80,0,0,-120,-1128
+Mawilite,598,"If held by a Mawile, this item allows it to Mega Evolve in battle.",6,0,0,0,-144,-888
+Meadow Plate,282,Holder's Grass-type attacks have 1.2x power. Judgment is Grass type.,4,0,0,0,-240,-408
+Medichamite,599,"If held by a Medicham, this item allows it to Mega Evolve in battle.",6,0,0,0,-168,-888
+Mental Herb,285,"Cures holder of Attract, Disable, Encore, Heal Block, Taunt, Torment. Single use.",3,10,0,0,-312,-408
+Metagrossite,618,"If held by a Metagross, this item allows it to Mega Evolve in battle.",6,0,0,0,-240,-912
+Metal Coat,286,Holder's Steel-type attacks have 1.2x power. Evolves Onix into Steelix and Scyther into Scizor when traded.,2,30,0,0,-336,-408
+Metal Powder,287,"If held by a Ditto that hasn't Transformed, its Defense is doubled.",2,10,0,0,-360,-408
+Metronome,289,Damage of moves used on consecutive turns is increased. Max 2x after 5 turns.,4,30,0,0,-24,-432
+Mewnium Z,658,"If held by a Mew with Psychic, it can use Genesis Supernova.",7,0,0,0,-48,-984
+Mewtwonite X,600,"If held by a Mewtwo, this item allows it to Mega Evolve in battle.",6,0,0,0,-192,-888
+Mewtwonite Y,601,"If held by a Mewtwo, this item allows it to Mega Evolve in battle.",6,0,0,0,-216,-888
+Micle Berry,290,Holder's next move has 1.2x accuracy when at 1/4 max HP or less. Single use.,4,0,100,Rock,-48,-432
+Mimikium Z,688,"If held by a Mimikyu with Play Rough, it can use Let's Snuggle Forever.",7,0,0,0,0,-1032
+Mind Plate,291,Holder's Psychic-type attacks have 1.2x power. Judgment is Psychic type.,4,0,0,0,-72,-432
+Miracle Seed,292,Holder's Grass-type attacks have 1.2x power.,2,30,0,0,-96,-432
+Mirror Herb,748,"When an opposing Pokemon raises a stat stage, the holder copies it. Single use.",9,30,0,0,-288,-1104
+Misty Seed,666,"If the terrain is Misty Terrain, raises holder's Sp. Def by 1 stage. Single use.",7,10,0,0,-240,-984
+Moon Ball,294,A Poke Ball for catching Pokemon that evolve using the Moon Stone.,2,0,0,0,-144,-432
+Moon Stone,295,"Evolves Nidorina into Nidoqueen, Nidorino into Nidoking, Clefairy into Clefable, Jigglypuff into Wigglytuff, Skitty into Delcatty, and Munna into Musharna when used.",1,30,0,0,-168,-432
+Muscle Band,297,Holder's physical attacks have 1.1x power.,4,10,0,0,-216,-432
+Mystic Water,300,Holder's Water-type attacks have 1.2x power.,2,30,0,0,-288,-432
+Nanab Berry,302,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Water,-336,-432
+Nest Ball,303,A Poke Ball that works especially well on weaker Pokemon in the wild.,3,0,0,0,-360,-432
+Net Ball,304,A Poke Ball that works especially well on Water- and Bug-type Pokemon.,3,0,0,0,0,-456
+Never-Melt Ice,305,Holder's Ice-type attacks have 1.2x power.,2,30,0,0,-24,-456
+Nomel Berry,306,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Dragon,-48,-456
+Normal Gem,307,Holder's first successful Normal-type attack will have 1.3x power. Single use.,5,0,0,0,-72,-456
+Normalium Z,631,"If holder has a Normal move, this item allows it to use a Normal Z-Move.",7,0,0,0,-168,-936
+Occa Berry,311,Halves damage taken from a supereffective Fire-type attack. Single use.,4,0,80,Fire,-168,-456
+Odd Incense,312,Holder's Psychic-type attacks have 1.2x power.,4,10,0,0,-192,-456
+Old Amber,314,Can be revived into Aerodactyl.,3,100,0,0,-240,-456
+Oran Berry,319,Restores 10 HP when at 1/2 max HP or less. Single use.,3,0,80,Poison,-360,-456
+Oval Stone,321,Evolves Happiny into Chansey when held and leveled up during the day.,4,80,0,0,-24,-480
+Pamtre Berry,323,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Steel,-72,-480
+Park Ball,325,A special Poke Ball for the Pal Park.,4,0,0,0,-120,-480
+Passho Berry,329,Halves damage taken from a supereffective Water-type attack. Single use.,4,0,80,Water,-216,-480
+Payapa Berry,330,Halves damage taken from a supereffective Psychic-type attack. Single use.,4,0,80,Psychic,-240,-480
+Pecha Berry,333,Holder is cured if it is poisoned. Single use.,3,0,80,Electric,-312,-480
+Persim Berry,334,Holder is cured if it is confused. Single use.,3,0,80,Ground,-336,-480
+Petaya Berry,335,Raises holder's Sp. Atk by 1 stage when at 1/4 max HP or less. Single use.,3,0,100,Poison,-360,-480
+Pidgeotite,622,"If held by a Pidgeot, this item allows it to Mega Evolve in battle.",6,0,0,0,-336,-912
+Pikanium Z,649,"If held by a Pikachu with Volt Tackle, it can use Catastropika.",7,0,0,0,-216,-960
+Pikashunium Z,659,"If held by cap Pikachu with Thunderbolt, it can use 10,000,000 Volt Thunderbolt.",7,0,0,0,-72,-984
+Pinap Berry,337,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Grass,-24,-504
+Pinsirite,602,"If held by a Pinsir, this item allows it to Mega Evolve in battle.",6,0,0,0,-240,-888
+Pixie Plate,610,Holder's Fairy-type attacks have 1.2x power. Judgment is Fairy type.,6,0,0,0,-48,-912
+Plume Fossil,339,Can be revived into Archen.,5,100,0,0,-72,-504
+Poison Barb,343,Holder's Poison-type attacks have 1.2x power.,2,70,0,0,-168,-504
+Poison Gem,344,Holder's first successful Poison-type attack will have 1.3x power. Single use.,5,0,0,0,-192,-504
+Poison Memory,670,Holder's Multi-Attack is Poison type.,7,0,0,0,-336,-984
+Poisonium Z,638,"If holder has a Poison move, this item allows it to use a Poison Z-Move.",7,0,0,0,-336,-936
+Poke Ball,345,A device for catching wild Pokemon. It is designed as a capsule system.,1,0,0,0,-216,-504
+Pomeg Berry,351,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Ice,-360,-504
+Power Anklet,354,Holder's Speed is halved. The Klutz Ability does not ignore this effect.,4,70,0,0,-48,-528
+Power Band,355,Holder's Speed is halved. The Klutz Ability does not ignore this effect.,4,70,0,0,-72,-528
+Power Belt,356,Holder's Speed is halved. The Klutz Ability does not ignore this effect.,4,70,0,0,-96,-528
+Power Bracer,357,Holder's Speed is halved. The Klutz Ability does not ignore this effect.,4,70,0,0,-120,-528
+Power Herb,358,Holder's two-turn moves complete in one turn (except Sky Drop). Single use.,4,10,0,0,-144,-528
+Power Lens,359,Holder's Speed is halved. The Klutz Ability does not ignore this effect.,4,70,0,0,-168,-528
+Power Weight,360,Holder's Speed is halved. The Klutz Ability does not ignore this effect.,4,70,0,0,-192,-528
+Premier Ball,363,A rare Poke Ball that has been crafted to commemorate an event.,3,0,0,0,-264,-528
+Primarium Z,652,"If held by a Primarina with Sparkling Aria, it can use Oceanic Operetta.",7,0,0,0,-288,-960
+Prism Scale,365,Evolves Feebas into Milotic when traded.,5,30,0,0,-312,-528
+Protective Pads,663,"Holder's moves are protected from adverse contact effects, except Pickpocket.",7,30,0,0,-168,-984
+Protector,367,Evolves Rhydon into Rhyperior when traded.,4,80,0,0,-360,-528
+Psychic Gem,369,Holder's first successful Psychic-type attack will have 1.3x power. Single use.,5,0,0,0,-24,-552
+Psychic Memory,680,Holder's Multi-Attack is Psychic type.,7,0,0,0,-192,-1008
+Psychic Seed,665,"If the terrain is Psychic Terrain, raises holder's Sp. Def by 1 stage. Single use.",7,10,0,0,-216,-984
+Psychium Z,641,"If holder has a Psychic move, this item allows it to use a Psychic Z-Move.",7,0,0,0,-24,-960
+Punching Glove,749,Holder's punch-based attacks have 1.1x power and do not make contact.,9,30,0,0,-312,-1104
+Qualot Berry,371,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Poison,-72,-552
+Quick Ball,372,A Poke Ball that provides a better catch rate at the start of a wild encounter.,4,0,0,0,-96,-552
+Quick Claw,373,"Each turn, holder has a 20% chance to move first in its priority bracket.",2,80,0,0,-120,-552
+Quick Powder,374,"If held by a Ditto that hasn't Transformed, its Speed is doubled.",4,10,0,0,-144,-552
+Rabuta Berry,375,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Ghost,-168,-552
+Rare Bone,379,No competitive use other than when used with Fling.,4,100,0,0,-264,-552
+Rawst Berry,381,Holder is cured if it is burned. Single use.,3,0,80,Grass,-312,-552
+Razor Claw,382,Holder's critical hit ratio is raised by 1 stage. Evolves Sneasel into Weavile when held and leveled up during the night.,4,80,0,0,-336,-552
+Razor Fang,383,Holder's attacks without a chance to make the target flinch gain a 10% chance to make the target flinch. Evolves Gligar into Gliscor when held and leveled up during the night.,4,30,0,0,-360,-552
+Razz Berry,384,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,80,Steel,0,-576
+Reaper Cloth,385,Evolves Dusclops into Dusknoir when traded.,4,10,0,0,-24,-576
+Red Card,387,"If holder survives a hit, attacker is forced to switch to a random ally. Single use.",5,10,0,0,-72,-576
+Red Orb,390,"If held by a Groudon, this item triggers its Primal Reversion in battle.",6,0,0,0,-144,-576
+Repeat Ball,401,A Poke Ball that works well on Pokemon species that were previously caught.,3,0,0,0,-24,-600
+Ribbon Sweet,710,Evolves Milcery into Alcremie when held and spun around.,8,10,0,0,-144,-1056
+Rindo Berry,409,Halves damage taken from a supereffective Grass-type attack. Single use.,4,0,80,Grass,-216,-600
+Ring Target,410,The holder's type immunities granted solely by its typing are negated.,5,10,0,0,-240,-600
+Rock Gem,415,Holder's first successful Rock-type attack will have 1.3x power. Single use.,5,0,0,0,-360,-600
+Rock Incense,416,Holder's Rock-type attacks have 1.2x power.,4,10,0,0,0,-624
+Rock Memory,672,Holder's Multi-Attack is Rock type.,7,0,0,0,0,-1008
+Rockium Z,643,"If holder has a Rock move, this item allows it to use a Rock Z-Move.",7,0,0,0,-72,-960
+Rocky Helmet,417,"If holder is hit by a contact move, the attacker loses 1/6 of its max HP.",5,60,0,0,-24,-624
+Room Service,717,"If Trick Room is active, the holder's Speed is lowered by 1 stage. Single use.",8,100,0,0,-312,-1056
+Root Fossil,418,Can be revived into Lileep.,3,100,0,0,-48,-624
+Rose Incense,419,Holder's Grass-type attacks have 1.2x power.,4,10,0,0,-72,-624
+Roseli Berry,603,Halves damage taken from a supereffective Fairy-type attack. Single use.,6,0,80,Fairy,-264,-888
+Rowap Berry,420,"If holder is hit by a special move, attacker loses 1/8 of its max HP. Single use.",4,0,100,Dark,-96,-624
+Rusted Shield,699,"If held by a Zamazenta, this item changes its forme to Crowned Shield.",8,0,0,0,-264,-1032
+Rusted Sword,698,"If held by a Zacian, this item changes its forme to Crowned Sword.",8,0,0,0,-240,-1032
+Sablenite,614,"If held by a Sableye, this item allows it to Mega Evolve in battle.",6,0,0,0,-144,-912
+Sachet,691,Evolves Spritzee into Aromatisse when traded.,6,80,0,0,-72,-1032
+Safari Ball,425,A special Poke Ball that is used only in the Safari Zone and Great Marsh.,1,0,0,0,-216,-624
+Safety Goggles,604,Holder is immune to powder moves and damage from Sandstorm or Hail.,6,80,0,0,-288,-888
+Sail Fossil,695,Can be revived into Amaura.,6,100,0,0,-168,-1032
+Salac Berry,426,Raises holder's Speed by 1 stage when at 1/4 max HP or less. Single use.,3,0,100,Fighting,-240,-624
+Salamencite,627,"If held by a Salamence, this item allows it to Mega Evolve in battle.",6,0,0,0,-72,-936
+Sceptilite,613,"If held by a Sceptile, this item allows it to Mega Evolve in battle.",6,0,0,0,-120,-912
+Scizorite,605,"If held by a Scizor, this item allows it to Mega Evolve in battle.",6,0,0,0,-312,-888
+Scope Lens,429,Holder's critical hit ratio is raised by 1 stage.,2,30,0,0,-312,-624
+Sea Incense,430,Holder's Water-type attacks have 1.2x power.,3,10,0,0,-336,-624
+Sharp Beak,436,Holder's Flying-type attacks have 1.2x power.,2,50,0,0,-96,-648
+Sharpedonite,619,"If held by a Sharpedo, this item allows it to Mega Evolve in battle.",6,0,0,0,-264,-912
+Shed Shell,437,"Holder may switch out even when trapped by another Pokemon, or by Ingrain.",4,10,0,0,-120,-648
+Shell Bell,438,"After an attack, holder gains 1/8 of the damage in HP dealt to other Pokemon.",3,30,0,0,-144,-648
+Shiny Stone,439,"Evolves Togetic into Togekiss, Roselia into Roserade, Minccino into Cinccino, and Floette into Florges when used.",4,80,0,0,-168,-648
+Shock Drive,442,Holder's Techno Blast is Electric type.,5,0,0,0,-240,-648
+Shuca Berry,443,Halves damage taken from a supereffective Ground-type attack. Single use.,4,0,80,Ground,-264,-648
+Silk Scarf,444,Holder's Normal-type attacks have 1.2x power.,3,10,0,0,-288,-648
+Silver Powder,447,Holder's Bug-type attacks have 1.2x power.,2,10,0,0,-360,-648
+Sitrus Berry,448,Restores 1/4 max HP when at 1/2 max HP or less. Single use.,3,0,80,Psychic,0,-672
+Skull Fossil,449,Can be revived into Cranidos.,4,100,0,0,-24,-672
+Sky Plate,450,Holder's Flying-type attacks have 1.2x power. Judgment is Flying type.,4,0,0,0,-48,-672
+Slowbronite,620,"If held by a Slowbro, this item allows it to Mega Evolve in battle.",6,0,0,0,-288,-912
+Smooth Rock,453,Holder's use of Sandstorm lasts 8 turns instead of 5.,4,10,0,0,-120,-672
+Snorlium Z,656,"If held by a Snorlax with Giga Impact, it can use Pulverizing Pancake.",7,0,0,0,0,-984
+Snowball,606,Raises holder's Attack by 1 if hit by an Ice-type attack. Single use.,6,30,0,0,-336,-888
+Soft Sand,456,Holder's Ground-type attacks have 1.2x power.,2,10,0,0,-192,-672
+Solganium Z,685,Solgaleo or Dusk Mane Necrozma with Sunsteel Strike can use a special Z-Move.,7,0,0,0,-312,-1008
+Soul Dew,459,"If held by a Latias/Latios, its Dragon- and Psychic-type moves have 1.2x power.",3,30,0,0,-264,-672
+Spell Tag,461,Holder's Ghost-type attacks have 1.2x power.,2,30,0,0,-312,-672
+Spelon Berry,462,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Dark,-336,-672
+Splash Plate,463,Holder's Water-type attacks have 1.2x power. Judgment is Water type.,4,0,0,0,-360,-672
+Spooky Plate,464,Holder's Ghost-type attacks have 1.2x power. Judgment is Ghost type.,4,0,0,0,0,-696
+Sport Ball,465,A special Poke Ball for the Bug-Catching Contest.,2,0,0,0,-24,-696
+Starf Berry,472,Raises a random stat by 2 when at 1/4 max HP or less (not acc/eva). Single use.,3,0,100,Psychic,-192,-696
+Star Sweet,709,Evolves Milcery into Alcremie when held and spun around.,8,10,0,0,-120,-1056
+Steelixite,621,"If held by a Steelix, this item allows it to Mega Evolve in battle.",6,0,0,0,-312,-912
+Steel Gem,473,Holder's first successful Steel-type attack will have 1.3x power. Single use.,5,0,0,0,-216,-696
+Steel Memory,675,Holder's Multi-Attack is Steel type.,7,0,0,0,-72,-1008
+Steelium Z,647,"If holder has a Steel move, this item allows it to use a Steel Z-Move.",7,0,0,0,-168,-960
+Stick,475,"If held by a Farfetch’d, its critical hit ratio is raised by 2 stages.",2,60,0,0,-264,-696
+Sticky Barb,476,"Each turn, holder loses 1/8 max HP. An attacker making contact can receive it.",4,80,0,0,-288,-696
+Stone Plate,477,Holder's Rock-type attacks have 1.2x power. Judgment is Rock type.,4,0,0,0,-312,-696
+Strange Ball,308,strangeball:,8,0,0,0,-96,-456
+Strawberry Sweet,704,Evolves Milcery into Alcremie when held and spun around.,8,10,0,0,0,-1056
+Sun Stone,480,"Evolves Gloom into Bellossom, Sunkern into Sunflora, Cottonee into Whimsicott, Petilil into Lilligant, and Helioptile into Heliolisk when used.",2,30,0,0,0,-720
+Swampertite,612,"If held by a Swampert, this item allows it to Mega Evolve in battle.",6,0,0,0,-96,-912
+Sweet Apple,711,Evolves Applin into Appletun when used.,8,30,0,0,-168,-1056
+Syrupy Apple,755,Evolves Applin into Dipplin when used.,9,30,0,0,-72,-1128
+Tamato Berry,486,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Psychic,-144,-720
+Tanga Berry,487,Halves damage taken from a supereffective Bug-type attack. Single use.,4,0,80,Bug,-168,-720
+Tapunium Z,653,"If held by a Tapu with Nature's Madness, it can use Guardian of Alola.",7,0,0,0,-312,-960
+Tart Apple,712,Evolves Applin into Flapple when used.,8,30,0,0,-192,-1056
+Terrain Extender,662,Holder's use of Electric/Grassy/Misty/Psychic Terrain lasts 8 turns instead of 5.,7,60,0,0,-144,-984
+Thick Club,491,"If held by a Cubone or a Marowak, its Attack is doubled.",2,90,0,0,-264,-720
+Throat Spray,713,Raises holder's Special Attack by 1 stage after it uses a sound move. Single use.,8,30,0,0,-216,-1056
+Thunder Stone,492,"Evolves Pikachu into Raichu or Alolan Raichu, Eevee into Jolteon, Eelektrik into Eelektross, and Charjabug into Vikavolt when used.",1,30,0,0,-288,-720
+Timer Ball,494,A Poke Ball that becomes better the more turns there are in a battle.,3,0,0,0,-336,-720
+Toxic Orb,515,"At the end of every turn, this item attempts to badly poison the holder.",4,30,0,0,-72,-768
+Toxic Plate,516,Holder's Poison-type attacks have 1.2x power. Judgment is Poison type.,4,0,0,0,-96,-768
+TR00,721,Teaches certain Pokemon the move Swords Dance. One use.,8,10,0,0,-24,-1080
+TR01,721,Teaches certain Pokemon the move Body Slam. One use.,8,85,0,0,-24,-1080
+TR02,730,Teaches certain Pokemon the move Flamethrower. One use.,8,90,0,0,-240,-1080
+TR03,731,Teaches certain Pokemon the move Hydro Pump. One use.,8,110,0,0,-264,-1080
+TR04,731,Teaches certain Pokemon the move Surf. One use.,8,90,0,0,-264,-1080
+TR05,735,Teaches certain Pokemon the move Ice Beam. One use.,8,90,0,0,-360,-1080
+TR06,735,Teaches certain Pokemon the move Blizzard. One use.,8,110,0,0,-360,-1080
+TR07,722,Teaches certain Pokemon the move Low Kick. One use.,8,10,0,0,-48,-1080
+TR08,733,Teaches certain Pokemon the move Thunderbolt. One use.,8,90,0,0,-312,-1080
+TR09,733,Teaches certain Pokemon the move Thunder. One use.,8,110,0,0,-312,-1080
+TR10,725,Teaches certain Pokemon the move Earthquake. One use.,8,100,0,0,-120,-1080
+TR11,734,Teaches certain Pokemon the move Psychic. One use.,8,90,0,0,-336,-1080
+TR12,734,Teaches certain Pokemon the move Agility. One use.,8,10,0,0,-336,-1080
+TR13,721,Teaches certain Pokemon the move Focus Energy. One use.,8,10,0,0,-24,-1080
+TR14,721,Teaches certain Pokemon the move Metronome. One use.,8,10,0,0,-24,-1080
+TR15,730,Teaches certain Pokemon the move Fire Blast. One use.,8,110,0,0,-240,-1080
+TR16,731,Teaches certain Pokemon the move Waterfall. One use.,8,80,0,0,-264,-1080
+TR17,734,Teaches certain Pokemon the move Amnesia. One use.,8,10,0,0,-336,-1080
+TR18,727,Teaches certain Pokemon the move Leech Life. One use.,8,80,0,0,-168,-1080
+TR19,721,Teaches certain Pokemon the move Tri Attack. One use.,8,80,0,0,-24,-1080
+TR20,721,Teaches certain Pokemon the move Substitute. One use.,8,10,0,0,-24,-1080
+TR21,722,Teaches certain Pokemon the move Reversal. One use.,8,10,0,0,-48,-1080
+TR22,724,Teaches certain Pokemon the move Sludge Bomb. One use.,8,90,0,0,-96,-1080
+TR23,725,Teaches certain Pokemon the move Spikes. One use.,8,10,0,0,-120,-1080
+TR24,736,Teaches certain Pokemon the move Outrage. One use.,8,120,0,0,0,-1104
+TR25,734,Teaches certain Pokemon the move Psyshock. One use.,8,80,0,0,-336,-1080
+TR26,721,Teaches certain Pokemon the move Endure. One use.,8,10,0,0,-24,-1080
+TR27,721,Teaches certain Pokemon the move Sleep Talk. One use.,8,10,0,0,-24,-1080
+TR28,727,Teaches certain Pokemon the move Megahorn. One use.,8,120,0,0,-168,-1080
+TR29,721,Teaches certain Pokemon the move Baton Pass. One use.,8,10,0,0,-24,-1080
+TR30,721,Teaches certain Pokemon the move Encore. One use.,8,10,0,0,-24,-1080
+TR31,729,Teaches certain Pokemon the move Iron Tail. One use.,8,100,0,0,-216,-1080
+TR32,737,Teaches certain Pokemon the move Crunch. One use.,8,80,0,0,-24,-1104
+TR33,728,Teaches certain Pokemon the move Shadow Ball. One use.,8,80,0,0,-192,-1080
+TR34,734,Teaches certain Pokemon the move Future Sight. One use.,8,120,0,0,-336,-1080
+TR35,721,Teaches certain Pokemon the move Uproar. One use.,8,90,0,0,-24,-1080
+TR36,730,Teaches certain Pokemon the move Heat Wave. One use.,8,95,0,0,-240,-1080
+TR37,737,Teaches certain Pokemon the move Taunt. One use.,8,10,0,0,-24,-1104
+TR38,734,Teaches certain Pokemon the move Trick. One use.,8,10,0,0,-336,-1080
+TR39,722,Teaches certain Pokemon the move Superpower. One use.,8,120,0,0,-48,-1080
+TR40,734,Teaches certain Pokemon the move Skill Swap. One use.,8,10,0,0,-336,-1080
+TR41,730,Teaches certain Pokemon the move Blaze Kick. One use.,8,85,0,0,-240,-1080
+TR42,721,Teaches certain Pokemon the move Hyper Voice. One use.,8,90,0,0,-24,-1080
+TR43,730,Teaches certain Pokemon the move Overheat. One use.,8,130,0,0,-240,-1080
+TR44,734,Teaches certain Pokemon the move Cosmic Power. One use.,8,10,0,0,-336,-1080
+TR45,731,Teaches certain Pokemon the move Muddy Water. One use.,8,90,0,0,-264,-1080
+TR46,729,Teaches certain Pokemon the move Iron Defense. One use.,8,10,0,0,-216,-1080
+TR47,736,Teaches certain Pokemon the move Dragon Claw. One use.,8,80,0,0,0,-1104
+TR48,722,Teaches certain Pokemon the move Bulk Up. One use.,8,10,0,0,-48,-1080
+TR49,734,Teaches certain Pokemon the move Calm Mind. One use.,8,10,0,0,-336,-1080
+TR50,732,Teaches certain Pokemon the move Leaf Blade. One use.,8,90,0,0,-288,-1080
+TR51,736,Teaches certain Pokemon the move Dragon Dance. One use.,8,10,0,0,0,-1104
+TR52,729,Teaches certain Pokemon the move Gyro Ball. One use.,8,10,0,0,-216,-1080
+TR53,722,Teaches certain Pokemon the move Close Combat. One use.,8,120,0,0,-48,-1080
+TR54,724,Teaches certain Pokemon the move Toxic Spikes. One use.,8,10,0,0,-96,-1080
+TR55,730,Teaches certain Pokemon the move Flare Blitz. One use.,8,120,0,0,-240,-1080
+TR56,722,Teaches certain Pokemon the move Aura Sphere. One use.,8,80,0,0,-48,-1080
+TR57,724,Teaches certain Pokemon the move Poison Jab. One use.,8,80,0,0,-96,-1080
+TR58,737,Teaches certain Pokemon the move Dark Pulse. One use.,8,80,0,0,-24,-1104
+TR59,732,Teaches certain Pokemon the move Seed Bomb. One use.,8,80,0,0,-288,-1080
+TR60,727,Teaches certain Pokemon the move X-Scissor. One use.,8,80,0,0,-168,-1080
+TR61,727,Teaches certain Pokemon the move Bug Buzz. One use.,8,90,0,0,-168,-1080
+TR62,736,Teaches certain Pokemon the move Dragon Pulse. One use.,8,85,0,0,0,-1104
+TR63,726,Teaches certain Pokemon the move Power Gem. One use.,8,80,0,0,-144,-1080
+TR64,722,Teaches certain Pokemon the move Focus Blast. One use.,8,120,0,0,-48,-1080
+TR65,732,Teaches certain Pokemon the move Energy Ball. One use.,8,90,0,0,-288,-1080
+TR66,723,Teaches certain Pokemon the move Brave Bird. One use.,8,120,0,0,-72,-1080
+TR67,725,Teaches certain Pokemon the move Earth Power. One use.,8,90,0,0,-120,-1080
+TR68,737,Teaches certain Pokemon the move Nasty Plot. One use.,8,10,0,0,-24,-1104
+TR69,734,Teaches certain Pokemon the move Zen Headbutt. One use.,8,80,0,0,-336,-1080
+TR70,729,Teaches certain Pokemon the move Flash Cannon. One use.,8,80,0,0,-216,-1080
+TR71,732,Teaches certain Pokemon the move Leaf Storm. One use.,8,130,0,0,-288,-1080
+TR72,732,Teaches certain Pokemon the move Power Whip. One use.,8,120,0,0,-288,-1080
+TR73,724,Teaches certain Pokemon the move Gunk Shot. One use.,8,120,0,0,-96,-1080
+TR74,729,Teaches certain Pokemon the move Iron Head. One use.,8,80,0,0,-216,-1080
+TR75,726,Teaches certain Pokemon the move Stone Edge. One use.,8,100,0,0,-144,-1080
+TR76,726,Teaches certain Pokemon the move Stealth Rock. One use.,8,10,0,0,-144,-1080
+TR77,732,Teaches certain Pokemon the move Grass Knot. One use.,8,10,0,0,-288,-1080
+TR78,724,Teaches certain Pokemon the move Sludge Wave. One use.,8,95,0,0,-96,-1080
+TR79,729,Teaches certain Pokemon the move Heavy Slam. One use.,8,10,0,0,-216,-1080
+TR80,733,Teaches certain Pokemon the move Electro Ball. One use.,8,10,0,0,-312,-1080
+TR81,737,Teaches certain Pokemon the move Foul Play. One use.,8,95,0,0,-24,-1104
+TR82,734,Teaches certain Pokemon the move Stored Power. One use.,8,20,0,0,-336,-1080
+TR83,734,Teaches certain Pokemon the move Ally Switch. One use.,8,10,0,0,-336,-1080
+TR84,731,Teaches certain Pokemon the move Scald. One use.,8,80,0,0,-264,-1080
+TR85,721,Teaches certain Pokemon the move Work Up. One use.,8,10,0,0,-24,-1080
+TR86,733,Teaches certain Pokemon the move Wild Charge. One use.,8,90,0,0,-312,-1080
+TR87,725,Teaches certain Pokemon the move Drill Run. One use.,8,80,0,0,-120,-1080
+TR88,730,Teaches certain Pokemon the move Heat Crash. One use.,8,10,0,0,-240,-1080
+TR89,723,Teaches certain Pokemon the move Hurricane. One use.,8,110,0,0,-72,-1080
+TR90,738,Teaches certain Pokemon the move Play Rough. One use.,8,90,0,0,-48,-1104
+TR91,724,Teaches certain Pokemon the move Venom Drench. One use.,8,10,0,0,-96,-1080
+TR92,738,Teaches certain Pokemon the move Dazzling Gleam. One use.,8,80,0,0,-48,-1104
+TR93,737,Teaches certain Pokemon the move Darkest Lariat. One use.,8,85,0,0,-24,-1104
+TR94,725,Teaches certain Pokemon the move High Horsepower. One use.,8,95,0,0,-120,-1080
+TR95,737,Teaches certain Pokemon the move Throat Chop. One use.,8,80,0,0,-24,-1104
+TR96,727,Teaches certain Pokemon the move Pollen Puff. One use.,8,90,0,0,-168,-1080
+TR97,734,Teaches certain Pokemon the move Psychic Fangs. One use.,8,85,0,0,-336,-1080
+TR98,731,Teaches certain Pokemon the move Liquidation. One use.,8,85,0,0,-264,-1080
+TR99,722,Teaches certain Pokemon the move Body Press. One use.,8,80,0,0,-48,-1080
+Twisted Spoon,520,Holder's Psychic-type attacks have 1.2x power.,2,30,0,0,-192,-768
+Tyranitarite,607,"If held by a Tyranitar, this item allows it to Mega Evolve in battle.",6,0,0,0,-360,-888
+Ultra Ball,521,An ultra-performance Ball that provides a higher catch rate than a Great Ball.,1,0,0,0,-216,-768
+Ultranecrozium Z,687,"Dusk Mane/Dawn Wings Necrozma: Ultra Burst, then Z-Move w/ Photon Geyser.",7,0,0,0,-360,-1008
+Unremarkable Teacup,756,Evolves Poltchageist into Sinistcha when used.,9,80,0,0,-96,-1128
+Up-Grade,523,Evolves Porygon into Porygon2 when traded.,2,30,0,0,-264,-768
+Utility Umbrella,718,"The holder ignores rain- and sun-based effects. Damage and accuracy calculations from attacks used by the holder are affected by rain and sun, but not attacks used against the holder.",8,60,0,0,-336,-1056
+Venusaurite,608,"If held by a Venusaur, this item allows it to Mega Evolve in battle.",6,0,0,0,0,-912
+Wacan Berry,526,Halves damage taken from a supereffective Electric-type attack. Single use.,4,0,80,Electric,-336,-768
+Water Gem,528,Holder's first successful Water-type attack will have 1.3x power. Single use.,5,0,0,0,0,-792
+Water Memory,677,Holder's Multi-Attack is Water type.,7,0,0,0,-120,-1008
+Water Stone,529,"Evolves Poliwhirl into Poliwrath, Shellder into Cloyster, Staryu into Starmie, Eevee into Vaporeon, Lombre into Ludicolo, and Panpour into Simipour when used.",1,30,0,0,-24,-792
+Waterium Z,633,"If holder has a Water move, this item allows it to use a Water Z-Move.",7,0,0,0,-216,-936
+Watmel Berry,530,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,100,Fire,-48,-792
+Wave Incense,531,Holder's Water-type attacks have 1.2x power.,4,10,0,0,-72,-792
+Weakness Policy,609,"If holder is hit super effectively, raises Attack, Sp. Atk by 2 stages. Single use.",6,80,0,0,-24,-912
+Wellspring Mask,759,Ogerpon-Wellspring: 1.2x power attacks; Terastallize to gain Embody Aspect.,9,60,0,0,-168,-1128
+Wepear Berry,533,Cannot be eaten by the holder. No effect when eaten with Bug Bite or Pluck.,3,0,90,Electric,-120,-792
+Whipped Dream,692,Evolves Swirlix into Slurpuff when traded.,6,80,0,0,-96,-1032
+White Herb,535,Restores all lowered stat stages to 0 when one is less than 0. Single use.,3,10,0,0,-168,-792
+Wide Lens,537,The accuracy of attacks by the holder is 1.1x.,4,10,0,0,-216,-792
+Wiki Berry,538,Restores 1/3 max HP at 1/4 max HP or less; confuses if -SpA Nature. Single use.,3,0,80,Rock,-240,-792
+Wise Glasses,539,Holder's special attacks have 1.1x power.,4,10,0,0,-264,-792
+Yache Berry,567,Halves damage taken from a supereffective Ice-type attack. Single use.,4,0,80,Ice,-168,-840
+Zap Plate,572,Holder's Electric-type attacks have 1.2x power. Judgment is Electric type.,4,0,0,0,-288,-840
+Zoom Lens,574,The accuracy of attacks by the holder is 1.2x if it moves after its target.,4,10,0,0,-336,-840
+Berserk Gene,388,"(Gen 2) On switch-in, raises holder's Attack by 2 and confuses it. Single use.",2,0,0,0,-96,-576
+Berry,319,(Gen 2) Restores 10 HP when at 1/2 max HP or less. Single use.,2,0,80,Poison,-360,-456
+Bitter Berry,334,(Gen 2) Holder is cured if it is confused. Single use.,2,0,80,Ground,-336,-480
+Burnt Berry,13,(Gen 2) Holder is cured if it is frozen. Single use.,2,0,80,Ice,-312,0
+Gold Berry,448,(Gen 2) Restores 30 HP when at 1/2 max HP or less. Single use.,2,0,80,Psychic,0,-672
+Ice Berry,381,(Gen 2) Holder is cured if it is burned. Single use.,2,0,80,Grass,-312,-552
+Mint Berry,65,(Gen 2) Holder wakes up if it is asleep. Single use.,2,0,80,Water,-24,-96
+Miracle Berry,262,(Gen 2) Holder cures itself if it is confused or has a status condition. Single use.,2,0,80,Flying,-144,-384
+Mystery Berry,244,(Gen 2) Restores 5 PP to the first of the holder's moves to reach 0 PP. Single use.,2,0,80,Fighting,-96,-360
+Pink Bow,444,(Gen 2) Holder's Normal-type attacks have 1.1x power.,2,0,0,0,-288,-648
+Polkadot Bow,444,(Gen 2) Holder's Normal-type attacks have 1.1x power.,2,0,0,0,-288,-648
+PRZ Cure Berry,63,(Gen 2) Holder cures itself if it is paralyzed. Single use.,2,0,80,Fire,-360,-72
+PSN Cure Berry,333,(Gen 2) Holder is cured if it is poisoned. Single use.,2,0,80,Electric,-312,-480
+Crucibellite,577,"If held by a Crucibelle, this item allows it to Mega Evolve in battle.",6,0,0,0,-24,-864
+Vile Vial,752,"If held by a Venomicon, its Poison- and Flying-type attacks have 1.2x power.",8,60,0,0,0,-1128

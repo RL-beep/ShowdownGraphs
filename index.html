@@ -10,6 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,700&family=Maven+Pro:wght@700&family=Montserrat:ital,wght@1,500&family=Pixelify+Sans&family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
+<header>
+    <a title="Support me on ko-fi.com" href="https://ko-fi.com/showdowngraphs" class="kofi-button" target="_blank">
+        <span class="kofitext"><img src="https://cdn.pikalytics.com/images/cup-border.png" class="kofiimg"> Support
+            <span class="support-us-heart">♥</span>
+        </span>
+    </a>
+    <img src="https://firebasestorage.googleapis.com/v0/b/smogon-stats.appspot.com/o/showdownGraphs.png?alt=media&token=7deb22db-3a65-4c70-83bc-67453c6a2b9f" alt="Header Image for Showdown Graphs Website" id="header-image">
+</header>
 <body>
     <div id="top-content-container">
 
@@ -23,22 +31,25 @@
                 <!-- Display Parameters container -->
                 <div id="graph-parameters">
                     <h3>Display Parameters:</h3>
-                    <div id="sheet-dropdown-container">
-                        <p style="font-weight: bold;" id="select-tier-text">Please select a Tier:</p>
-                        <label for="sheet-dropdown">Tier:</label>
-                        <select id="sheet-dropdown"></select>
-                    </div> 
-                    <div id="flex-direction-column">
-                        <div id="date-data-dropdowns">
-                            <div>
-                                <label for="min-data-dropdown">Min Date:</label>
-                                <select id="min-data-dropdown">
-                                </select>
-                            </div>
-                            <div>
-                                <label max-data-dropdown for="max-data-dropdown">Max Date:</label>
-                                <select id="max-data-dropdown">
-                                </select>
+                    <div id="tier-dates-dropdown">
+                        <div id="sheet-dropdown-container">
+                            <p style="font-weight: bold;" id="select-tier-text">Please select a Tier:</p>
+                            <label for="sheet-dropdown">Tier:</label>
+                            <br>
+                            <select id="sheet-dropdown"></select>
+                        </div> 
+                        <div id="flex-direction-column">
+                            <div id="date-data-dropdowns">
+                                <div>
+                                    <label for="min-data-dropdown">Min Date:</label>
+                                    <select id="min-data-dropdown">
+                                    </select>
+                                </div>
+                                <div>
+                                    <label max-data-dropdown for="max-data-dropdown">Max Date:</label>
+                                    <select id="max-data-dropdown">
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -47,7 +58,6 @@
                 <!-- Preset Options container -->
                 <div id="populate-graph-options">
                     <h3>Preset Options:</h3>
-                    <h5>(taken from max date)</h5>
                     <button id="populate-top-5-button" class="populate-graph-button">
                         <span>Top 5</span>
                         <span>Pokémon</span>
@@ -61,7 +71,6 @@
                         <span>Pokémon</span>
                     </button>
                 </div>
-
             </div>
 
             <!-- Clear All button -->
@@ -90,9 +99,148 @@
 
     </div>    
 
+    <div class="overlay" id="overlay"></div>
+    <div class="detailed-analysis-container" id="detailed-analysis-container">
+        <div class="detailed-pokemon-analysis-backgrounds">
+            <div class="detailed-pokemon-analysis-background" id="background1"></div>
+            <div class="detailed-pokemon-analysis-background" id="background2"></div>
+            <div class="detailed-pokemon-analysis-background" id="background3"></div>
+            <div class="detailed-pokemon-analysis-background" id="background4"></div>
+            <div class="detailed-pokemon-analysis-background" id="background5"></div>
+            <div class="detailed-pokemon-analysis-background" id="background6"></div>
+            <div class="detailed-pokemon-analysis-background" id="background7"></div>
+            <div class="detailed-pokemon-analysis-background" id="background8"></div>
+            <div class="detailed-pokemon-analysis-background" id="background9"></div>
+            <div class="detailed-pokemon-analysis-background" id="background10"></div>
+            <div class="detailed-pokemon-analysis-background" id="background11"></div>
+            <div class="detailed-pokemon-analysis-background" id="background12"></div>
+            <div class="detailed-pokemon-analysis-background" id="background13"></div>
+            <div class="detailed-pokemon-analysis-background" id="background14"></div>
+            <div class="detailed-pokemon-analysis-background" id="background15"></div>
+            <div class="detailed-pokemon-analysis-background" id="background16"></div>
+            <div class="detailed-pokemon-analysis-background" id="background17"></div>
+            <div class="detailed-pokemon-analysis-background" id="background18"></div>
+            <div class="detailed-pokemon-analysis-background" id="background19"></div>
+            <div class="detailed-pokemon-analysis-background" id="background20"></div>
+            <div class="detailed-pokemon-analysis-background" id="background21"></div>
+            <div class="detailed-pokemon-analysis-background" id="background22"></div>
+            <div class="detailed-pokemon-analysis-background" id="background23"></div>
+            <div class="detailed-pokemon-analysis-background" id="background24"></div>
+            <div class="detailed-pokemon-analysis-background" id="background25"></div>
+            <div class="detailed-pokemon-analysis-background" id="background26"></div>
+            <div class="detailed-pokemon-analysis-background" id="background27"></div>
+            <div class="detailed-pokemon-analysis-background" id="background28"></div>
+            <div class="detailed-pokemon-analysis-background" id="background29"></div>
+            <div class="detailed-pokemon-analysis-background" id="background30"></div>
+            <div class="detailed-pokemon-analysis-background" id="background31"></div>
+            <div class="detailed-pokemon-analysis-background" id="background32"></div>
+        </div>
+        <div id="detailed-pokemon-box"></div>
+
+        <div class="full-detailed-analysis-container">
+
+            <div class="detailed-analysis-container-no-sidebar">
+
+                <div class="specific-detailed-analysis-pokemon-container" id="detailed-analysis-pokemon1">
+                    <div class="animation-graph-container">
+                        <div class="animation-details-container">
+                            <div class="specific-detailed-analysis-pokemon-animation" id="pokemon-animation-or-image1"></div>
+                            <div class="analysis-pokemon-types" id="analysis-pokemon-types1">
+
+                            </div>
+                            <h3 id="analysis-name-slot1">Analysis Slot #1</h3>
+                            <div class = "sprite-checkboxes1">
+                                <label for="sprite-back-checkbox1">Back</label>
+                                <input type="checkbox" id="sprite-back-checkbox1">
+                                <label for="sprite-shiny-checkbox1">Shiny</label>
+                                <input type="checkbox" id="sprite-shiny-checkbox1">
+                            </div>
+                        </div>
+                        <div class="specific-detailed-analysis-graph" id="specific-detailed-analysis-graph1"></div>
+                    </div>
+                    <div class="specific-detailed-analysis-pokemon-parameters">
+                        <div id="analysis-pokemon-parameters-div-tier1">
+                            <label for="analysis-pokemon-parameters-tier1">Tier :</label>
+                            <select id="analysis-pokemon-parameters-tier1"></select>
+                        </div>
+                        <div id="analysis-pokemon-parameters-div-snapshot1">
+                            <label for="analysis-pokemon-parameters-snapshot1">Snapshot :</label>
+                            <select id="analysis-pokemon-parameters-snapshot1"></select>
+                        </div>  
+                    </div>
+                </div>
+
+                <div class="specific-detailed-analysis-pokemon-container" id="detailed-analysis-pokemon2">
+                    <div class="animation-graph-container">
+                        <div class="animation-details-container">
+                            <div class="specific-detailed-analysis-pokemon-animation" id="pokemon-animation-or-image2"></div>
+                            <div class="analysis-pokemon-types" id="analysis-pokemon-types2">
+
+                            </div>
+                            <h3 id="analysis-name-slot2">Analysis Slot #2</h3>
+                        <div class = "sprite-checkboxes2">
+                            <label for="sprite-back-checkbox2">Back</label>
+                            <input type="checkbox" id="sprite-back-checkbox2">
+                            <label for="sprite-shiny-checkbox2">Shiny</label>
+                            <input type="checkbox" id="sprite-shiny-checkbox2">
+                        </div>
+                        </div>
+                        <div class="specific-detailed-analysis-graph" id="specific-detailed-analysis-graph2"></div>
+                    </div>
+                    <div class="specific-detailed-analysis-pokemon-parameters">
+                        <div id="analysis-pokemon-parameters-div-tier2">
+                            <label for="analysis-pokemon-parameters-tier2">Tier :</label>
+                            <select id="analysis-pokemon-parameters-tier2"></select>
+                        </div>
+                        <div id="analysis-pokemon-parameters-div-snapshot2">
+                            <label for="analysis-pokemon-parameters-snapshot2">Snapshot :</label>
+                            <select id="analysis-pokemon-parameters-snapshot2"></select>
+                        </div>  
+                    </div>
+                </div>
+                
+            </div>
+
+            <div id="specific-detailed-analysis-sidebar">
+                <button id="analysis-usage-button" class="analysis-sidebar-buttons">
+                    <span>Usage</span>
+                </button>
+                <button id="analysis-stats-button" class="analysis-sidebar-buttons">
+                    <span>Stats</span>
+                </button>
+                <button id="analysis-abilities-button" class="analysis-sidebar-buttons">
+                    <span>Abilities</span>
+                </button>
+                <button id="analysis-items-button" class="analysis-sidebar-buttons">
+                    <span>Items</span>
+                </button>
+                <button id="analysis-moves-button" class="analysis-sidebar-buttons">
+                    <span>Moves</span>
+                </button>
+                <button id="analysis-spreads-button" class="analysis-sidebar-buttons">
+                    <span>EV Spreads</span>
+                </button>
+                <button id="analysis-teammates-button" class="analysis-sidebar-buttons">
+                    <span>Teammates</span>
+                </button>
+                <button id="analysis-counters-button" class="analysis-sidebar-buttons">
+                    <span>Counters</span>
+                </button>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
     <script src="src/pokemon-script.js" type="module"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v2.min.js"></script>
     
 </body>
 <footer>

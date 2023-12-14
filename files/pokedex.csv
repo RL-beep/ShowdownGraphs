@@ -465,11 +465,16 @@ Latias-Mega,1310,Mega,-80,-3270
 Latios,381,,-360,-930
 Latios-Mega,1311,Mega,-120,-3270
 Kyogre,382,,-400,-930
+Kyogre-Primal,1312,Primal,-160,-3270
 Groudon,383,,-440,-930
+Groudon-Primal,1313,Primal,-200,-3270
 Rayquaza,384,,0,-960
 Rayquaza-Mega,1314,Mega,-240,-3270
 Jirachi,385,,-40,-960
 Deoxys,386,,-80,-960
+Deoxys-Attack,1058,Attack,-80,-2640
+Deoxys-Defense,1059,Defense,-120,-2640
+Deoxys-Speed,1060,Speed,-160,-2640
 Turtwig,387,,-120,-960
 Grotle,388,,-160,-960
 Torterra,389,,-200,-960
@@ -579,10 +584,13 @@ Uxie,480,,0,-1200
 Mesprit,481,,-40,-1200
 Azelf,482,,-80,-1200
 Dialga,483,,-120,-1200
+Dialga-Origin,1257,Origin,-360,-3120
 Palkia,484,,-160,-1200
+Palkia-Origin,1258,Origin,-400,-3120
 Heatran,485,,-200,-1200
 Regigigas,486,,-240,-1200
 Giratina,487,,-280,-1200
+Giratina-Origin,1073,Origin,-200,-2670
 Cresselia,488,,-320,-1200
 Phione,489,,-360,-1200
 Manaphy,490,,-400,-1200
@@ -894,6 +902,7 @@ Lycanroc,745,,-40,-1860
 Lycanroc-Midnight,1163,Midnight,-440,-2880
 Lycanroc-Dusk,1180,Dusk,-160,-2940
 Wishiwashi,746,,-80,-1860
+Wishiwashi-School,1164,School,0,-2910
 Mareanie,747,,-120,-1860
 Toxapex,748,,-160,-1860
 Mudbray,749,,-200,-1860
@@ -1271,3 +1280,4 @@ Saharaja,1498,CAP,-400,-3720
 Ababo,1535,CAP,-440,-3810
 Scattervein,1536,CAP,0,-3840
 Hemogoblin,1499,CAP,-440,-3720
+Cresceidon,1537,CAP,-40,-3840
