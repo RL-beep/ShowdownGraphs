@@ -10,7 +10,7 @@ body {
   font-size: 1rem;
   background-color: #0d1b2a;
   display: grid;
-  grid-template-rows: 1fr auto; /* The first row takes the remaining space, and the second row is the footer. */
+  grid-template-rows: 1fr auto;
   min-height: 100vh;
 }
 
@@ -46,13 +46,8 @@ display: flex;
 flex-direction: row;
 font-size: 0.8rem; 
 justify-content: space-between;
-/* border: solid 1px red; */
 width:82%
 }
-
-/* #date-data-dropdowns > *:not(:first-child) {
-  margin-left: auto;
-} */
 
 #populate-graph-options {
   align-items: center; 
@@ -96,9 +91,7 @@ font-family: 'Pixelify Sans', cursive;
 font-family: 'Roboto', sans-serif;
 font-weight: bold;
 padding: 0.5em 0.8em;
-/* Add box-shadow for a different style */
 box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-/* Add a border to give it a different look */
 border: 2px solid #0466c8;
 word-wrap: break-word;
 display: flex;
@@ -116,9 +109,7 @@ align-items: center;
 
 #graph-parameters-options .populate-graph-button:hover {
 background-color: #002855;
-/* Adjust border color on hover for contrast */
 border-color: #002855;
-/* Adjust box-shadow on hover for a subtle lift effect */
 box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -137,7 +128,7 @@ justify-content: center;
 }
 
 .pokemon-icon{
-cursor: pointer; /* Change the cursor style to a pointer */
+cursor: pointer;
 }
 
 .pokemon-icon-background {
@@ -149,7 +140,7 @@ border-radius: 18%;
 }
 
 .pokemon-icon-background:hover {
-animation: bobblingHoverYellow 0.5s infinite alternate; /* Bobbling animation on hover */
+animation: bobblingHoverYellow 0.5s infinite alternate;
 }
 
 @keyframes bobblingHoverYellow {
@@ -173,18 +164,18 @@ animation: bobblingHoverYellow 0.5s infinite alternate; /* Bobbling animation on
 @keyframes bobblingHoverOrange {
 0% {
   transform: translateY(0);
-  background-color: #ff9900; /* Adjusted to a more orange color */
-  box-shadow: 0 0 5px rgba(255, 153, 0, 0.5); /* Adjusted to a more orange color */
+  background-color: #ff9900;
+  box-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
 }
 50% {
   transform: translateY(-10px);
-  background-color: #ff9900; /* Adjusted to a more orange color */
-  box-shadow: 0 0 10px rgba(255, 153, 0, 0.8); /* Adjusted to a more orange color */
+  background-color: #ff9900;
+  box-shadow: 0 0 10px rgba(255, 153, 0, 0.8);
 }
 100% {
   transform: translateY(0);
-  background-color: #ff9900; /* Adjusted to a more orange color */
-  box-shadow: 0 0 5px rgba(255, 153, 0, 0.5); /* Adjusted to a more orange color */
+  background-color: #ff9900;
+  box-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
 }
 }
 
@@ -230,7 +221,6 @@ background-size: contain;
   margin-top: 60px;
 }
 
-
 #suggestions-list {
   list-style-type: none;
   padding: 0;
@@ -252,7 +242,6 @@ background-size: contain;
   background-color: #bdeeff;
 }
 
-/* Style the remove button */
 .remove-button {
   background-color: transparent;
   border: none;
@@ -268,7 +257,7 @@ margin-left: auto;
 margin-right: auto;
 width: 75%;
 margin-top: 3.125em;
-background-color: whitesmoke; /* Set the background color to white */
+background-color: whitesmoke;
 }
 
 #search-results {
@@ -303,9 +292,6 @@ transition: background-color 0.2s ease-in-out;
 #search-results li:hover {
 background-color: #ffcc00;
 }
-
-
-/* clear all button CSS */
 
 #clear-all-button{
   height: fit-content;
@@ -426,29 +412,26 @@ margin: 2em 0em 0.5em 0em;
 
 .line {
 width: 95.7%;
-height: 3px; /* You can adjust the height of the line */
-background-color: whitesmoke; /* Line color, change this to your desired color */
+height: 3px;
+background-color: whitesmoke;
 align-self: center;
 }
 
 .big-detailed-chart-container{
 display: flex;
 align-self: center;
-/* border: solid red 1px; */
 margin-top: 1em;
 width:90%;
 height: 30em;
 }
 
 .detailed-chart-container-row{
-/* border: solid 1px green; */
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 }
 
 .individual-detailed-graph-container{
-/* border: solid 1px yellow; */
 display: flex;
 flex-direction: column;
 align-items: flex-start;
@@ -644,14 +627,14 @@ left: 25%;
 z-index: 2000;
 cursor: zoom-out;
 background-color: whitesmoke;
-opacity: 0; /* Start with 0 opacity */
-transform: scale(0.9); /* Start with a smaller size */
-transition: opacity 0.2s, transform 0.2s; /* Add animation transitions */
+opacity: 0;
+transform: scale(0.9);
+transition: opacity 0.2s, transform 0.2s;
 }
 
 .expanded.active {
-opacity: 1; /* When active, make it fully visible */
-transform: scale(1); /* Scale it to its original size */
+opacity: 1;
+transform: scale(1); 
 }
 
 .tooltip{
@@ -701,7 +684,6 @@ align-items: center;
 }
 
 .analysis-pokemon-types {
-/* border: 1px solid green; */
 height: 14px;
 width: 80px;
 display: flex;
@@ -709,22 +691,20 @@ flex-direction: row;
 justify-content: space-around;
 transform: scale(1.7);
 position: relative;
-top: 15px; /* Adjust this value based on your layout */
+top: 15px;
 }
 
 .specific-detailed-analysis-pokemon-animation {
-/* border: solid 2px red; */
 height: 100%;
 width: 100%;
-max-width: 215px; /* Adjust this value to your desired maximum width */
+max-width: 215px;
 background-repeat: no-repeat;
-background-position: center; /* Center the background image */
+background-position: center;
 background-size: contain;
 margin-top: 40px;
 }
 
 .animation-details-container {
-/* border: solid 2px blue; */
 display: flex;
 flex-direction: column;
 margin-left: 10px;
@@ -738,10 +718,9 @@ align-items: center;
 #analysis-name-slot1, #analysis-name-slot2 {
 align-self: center;
 position: relative;
-top: 8px; /* Adjust this value based on your layout */
+top: 8px;
 font-weight: bold;
 font-size: 38px;
-/* border: solid 2px #9CAFB7; */
 }
 
 #analysis-gen-slot1,#analysis-snapshot-slot1,#analysis-gen-slot2,#analysis-snapshot-slot2, #analysis-tier-slot1,#analysis-tier-slot2{
@@ -756,7 +735,7 @@ text-align: left;
 background-color: #23272A;
 padding: 10px 15px;
 position: relative;
-top: 2px; /* Adjust this value based on your layout */
+top: 2px;
 }
 
 #specific-detailed-analysis-sidebar {
@@ -796,9 +775,9 @@ justify-self: flex-end;
 .analysis-sidebar-buttons {
 width: 80%;
 color: #fff;
-background-color: #23272A; /* Button color */
+background-color: #23272A;
 border: solid 1px lightgray;
-padding: 15px 20px; /* Adjust padding as needed */
+padding: 15px 20px;
 font-weight: bold;
 font-size: 14px;
 border-radius: 3px;
@@ -810,7 +789,7 @@ text-align: center;
 }
 
 .analysis-sidebar-buttons:hover {
-background-color: #ffcc00 !important; /* Darker shade on hover */
+background-color: #ffcc00 !important;
 }
 
 @keyframes pulsateMainMon {
@@ -842,17 +821,14 @@ background-color: #ffcc00 !important; /* Darker shade on hover */
 
 .pokemon-teammate-centre {
   transform: scale(3);
-  /* filter: drop-shadow(0 0 5px rgba(0, 255, 0, 1)); */
-  /* animation: pulsateMainMon 2.5s infinite; */
-  /* cursor: pointer; */
 }
 
 footer {
   text-align: center;
-  background-color: #0D1B2A; /* Set your desired background color */
-  padding: 10px; /* Adjust padding as needed */
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Set the box shadow for the border */
-  color: whitesmoke; /* Set the text color */
+  background-color: #0D1B2A;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  color: whitesmoke;
   margin-top: 30px;
 }
 
@@ -877,8 +853,7 @@ header {
   height: 100%;
   padding: 10px 15px !important;
   margin-left: 0px;
-  /* border-radius: 3px; */
-  text-decoration: none; /* Remove underline */
+  text-decoration: none;
 }
 
 .kofi-button:hover {
@@ -967,7 +942,7 @@ header {
 
 
 .kofitext .support-us-heart {
-  display: inline-block; /* or display: block; */
+  display: inline-block;
   animation: new-heart-animation 10s infinite;
   transform-origin: center;
 }
@@ -1002,10 +977,12 @@ header {
   .analysis-sidebar-buttons{
     width:100%;
     font-size: 12px;
-    align-self: flex-start;
-    text-align: left;
-    padding-left: 2px;
+    align-self: stretch;
+    padding-left: 12px;
     padding-right: 0;
+  }
+  .analysis-sidebar-buttons span {
+    white-space: none;
   }
   footer{
     box-shadow: none;
@@ -1013,6 +990,23 @@ header {
 
   .kofi-button{
     margin-left: 35px;
+  }
+
+  #analysis-name-slot1, #analysis-name-slot2 {
+    font-size: 24px;
+  }
+
+  .full-detailed-analysis-container{
+    margin-left: 0px;
+  }
+  #specific-detailed-analysis-sidebar {
+    width:75px;
+  }
+  .detailed-analysis-container-no-sidebar{
+    width:730px;
+  }
+  .full-detailed-analysis-container{
+    width:800px;
   }
   
 }
