@@ -205,6 +205,10 @@ background-size: contain;
 
 }
 
+#search-input{
+  font-size: 28px;
+}
+
 #search-container {
   flex-grow: 1;
 }
