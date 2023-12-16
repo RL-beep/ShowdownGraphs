@@ -974,15 +974,16 @@ header {
     margin-top: 100px;
   }
 
+
   .analysis-sidebar-buttons{
     width:100%;
     font-size: 12px;
-    align-self: stretch;
-    padding-left: 12px;
-    padding-right: 0;
+    text-align: left;
+    padding-left: 1px;
   }
+  
   .analysis-sidebar-buttons span {
-    white-space: none;
+    text-align: left;
   }
   footer{
     box-shadow: none;
@@ -996,9 +997,6 @@ header {
     font-size: 24px;
   }
 
-  .full-detailed-analysis-container{
-    margin-left: 0px;
-  }
   #specific-detailed-analysis-sidebar {
     width:75px;
   }
