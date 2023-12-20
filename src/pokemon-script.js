@@ -1412,7 +1412,7 @@ function dropEventListener(listItem){
 // Function to create a Pokemon icon div element
 function createPokemonIcon(xOffset, yOffset) {
     const divElement = document.createElement('div');
-    divElement.style.background = `transparent url(https://play.pokemonshowdown.com/sprites/pokemonicons-sheet.png?v14) no-repeat scroll ${xOffset}px ${yOffset}px`;
+    divElement.style.background = `transparent url(https://play.pokemonshowdown.com/sprites/pokemonicons-sheet.png?v16) no-repeat scroll ${xOffset}px ${yOffset}px`;
     divElement.style.width = '40px';
     divElement.style.height = '30px';
     return divElement;
