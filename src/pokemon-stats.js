@@ -1541,6 +1541,7 @@ async function getPokemonTypes(tier) {
                 || data[key].forme === 'Wellspring' || data[key].forme === 'Hearthflame' || data[key].forme === 'Cornerstone' 
                 || data[key].forme === 'Hisui' || data[key].forme === 'Paldea-Combat' || data[key].forme === 'Paldea-Blaze' 
                 || data[key].forme === 'Paldea-Aqua' || data[key].forme === 'Paldea' || data[key].forme === 'Epilogue' || data[key].forme === 'Bloodmoon'
+                || data[key].forme === 'Terastal' || data[key].forme === 'Stellar'
                 ) &&
                 data[key].isNonstandard !== 'Custom'
               ){
@@ -4125,6 +4126,7 @@ async function getPokemonStats(tier) {
                 || data[key].forme === 'Wellspring' || data[key].forme === 'Hearthflame' || data[key].forme === 'Cornerstone' 
                 || data[key].forme === 'Hisui' || data[key].forme === 'Paldea-Combat' || data[key].forme === 'Paldea-Blaze' 
                 || data[key].forme === 'Paldea-Aqua' || data[key].forme === 'Paldea' || data[key].forme === 'Epilogue' || data[key].forme === 'Bloodmoon'
+                || data[key].forme === 'Terastal' || data[key].forme === 'Stellar'
                 ) &&
                 data[key].isNonstandard !== 'Custom'
               ){

@@ -2161,7 +2161,7 @@ function setSelectedPokemonAnimationOrImage(analysisTierDropdown,analysisSlot) {
 "mime jr.","mr. mime-galar","mr. mime","nidoran-m","nidoran-f","raging bolt","roaring moon","sandy shocks","scream tail","slither wing",
 "sirfetch’d","tapu bulu","tapu fini","tapu koko","tapu lele","ting-lu","type: null","walking wake","wo-chien","urshifu-rapid-strike",
 "tauros-paldea-combat","tauros-paldea-blaze","tauros-paldea-aqua","zygarde-10%","oricorio-pom-pom","oricorio-pa'u",
-"necrozma-dusk-mane","necrozma-dawn-wings","gouging fire","iron boulder","terapagos-terastal","terapagos-stellar"
+"necrozma-dusk-mane","necrozma-dawn-wings","gouging fire","iron boulder"
 
 
 ];
