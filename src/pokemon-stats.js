@@ -12,9 +12,9 @@ let pokemonNamesPromise = null; // Cache for getPokemonAttributesFromPokedex res
  // This will decide which tiers to fetch data from
 const tiers = [ 
                 //Remeber to update pokemon types and pokemon abilities functions, if new gen comes out
-                ['gen9ubersuu-1630'],
-                ['gen9ubers-1630'],
                 ['gen9ou-1695'],
+                ['gen9ubers-1630'],
+                ['gen9ubersuu-1630'],
                 ['gen9uu-1630'],
                 ['gen9ru-1630'],
                 ['gen9nu-1630'],
@@ -145,9 +145,10 @@ const snapshots = [
                 '2023-06/',
                 '2023-07/',
                 '2023-08/',
-                '2023-09/',
+                '2023-09',
                 '2023-10/',
                 '2023-11/',
+                '2023-12/',
 ]
 
 const fs = require('fs');
@@ -320,7 +321,8 @@ async function writePokemonDataToCSV(data,tier) {
   data.forEach(item => {
     Object.keys(item).forEach(key => {
       const { usage, snapshot } = item[key];
-      csvData.push([key, usage, snapshot]);
+      const cleanedSnapshot = snapshot.replace(/-DLC\d+/, "");
+      csvData.push([key, usage, cleanedSnapshot]);
     });
   });
 
@@ -364,8 +366,10 @@ async function writePokemonAbilitiesDataToCSV(data, tier) {
       // Extract snapshot and abilities data
       const { snapshot, usage } = abilitiesData;
 
+      const cleanedSnapshot = snapshot.replace(/-DLC\d+/, '');
+
       // Create an array to store the CSV row for the current Pokemon
-      const csvRow = [entryInstance, snapshot];
+      const csvRow = [entryInstance, cleanedSnapshot];
 
       // Iterate over each ability in the abilities data, up to the maximum defined
       for (let i = 0; i < maxAbilities; i++) {
@@ -421,8 +425,10 @@ async function writePokemonItemsDataToCSV(data, tier) {
       // Extract snapshot and items data
       const { snapshot, usage } = itemsData;
 
+      const cleanedSnapshot = snapshot.replace(/-DLC\d+/, '');
+
       // Create an array to store the CSV row for the current Pokemon
-      const csvRow = [entryInstance, snapshot];
+      const csvRow = [entryInstance, cleanedSnapshot];
 
       // Iterate over each item in the items data, up to the dynamically calculated maximum
       for (let i = 0; i < maxItems; i++) {
@@ -478,8 +484,10 @@ async function writePokemonMovesDataToCSV(data, tier) {
       // Extract snapshot and moves data
       const { snapshot, usage } = movesData;
 
+      const cleanedSnapshot = snapshot.replace(/-DLC\d+/, '');
+
       // Create an array to store the CSV row for the current Pokemon
-      const csvRow = [entryInstance, snapshot];
+      const csvRow = [entryInstance, cleanedSnapshot];
 
       // Iterate over each move in the moves data, up to the dynamically calculated maximum
       for (let i = 0; i < maxMoves; i++) {
@@ -535,8 +543,10 @@ async function writePokemonTeammatesDataToCSV(data, tier) {
       // Extract snapshot and teammates data
       const { snapshot, usage } = teammatesData;
 
+      const cleanedSnapshot = snapshot.replace(/-DLC\d+/, '');
+
       // Create an array to store the CSV row for the current Pokemon
-      const csvRow = [entryInstance, snapshot];
+      const csvRow = [entryInstance, cleanedSnapshot];
 
       // Iterate over each teammate in the teammates data, up to the dynamically calculated maximum
       for (let i = 0; i < maxteammates; i++) {
@@ -592,8 +602,10 @@ async function writePokemonSpreadsDataToCSV(data, tier) {
       // Extract snapshot and spreads data
       const { snapshot, usage } = spreadsData;
 
+      const cleanedSnapshot = snapshot.replace(/-DLC\d+/, '');
+
       // Create an array to store the CSV row for the current Pokemon
-      const csvRow = [entryInstance, snapshot];
+      const csvRow = [entryInstance, cleanedSnapshot];
 
       // Iterate over each spread in the spreads data, up to the dynamically calculated maximum
       for (let i = 0; i < maxspreads; i++) {
@@ -655,8 +667,10 @@ async function writePokemonCountersDataToCSV(data, tier) {
       // Extract snapshot and counters data
       const { snapshot, usage } = countersData;
 
+      const cleanedSnapshot = snapshot.replace(/-DLC\d+/, '');
+
       // Create an array to store the CSV row for the current Pokemon
-      const csvRow = [entryInstance, snapshot];
+      const csvRow = [entryInstance, cleanedSnapshot];
 
       // Iterate over each counter in the counters data, up to the dynamically calculated maximum
       for (let i = 0; i < maxcounters; i++) {
